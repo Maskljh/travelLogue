@@ -1,0 +1,55 @@
+/* pages/travelogue/travelogue.wxss */
+.container {
+  padding: 16rpx;
+  background: #f7f7f7;
+}
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card {
+  width: 48%;
+  background: #fff;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card-content {
+  padding: 16rpx;
+}
+.card-title {
+  font-weight: bold;
+  font-size: 32rpx;
+  margin-bottom: 8rpx;
+}
+.card-desc {
+  color: #888;
+  font-size: 24rpx;
+  margin-bottom: 12rpx;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.user-info{
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.item-ava {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+}

@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/travelogue/travelogue",
+    "pages/community/community",
+    "pages/message/message",
+    "pages/travel/travel",
+    "pages/our/our",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2b4b6b",
+    "navigationBarTitleText": "游记列表",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath":"pages/travelogue/travelogue",
+        "text": "回顶部",
+        "iconPath": "/images/tabs/home.png",
+        "selectedIconPath": "/images/tabs/home-active.png"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "社区",
+        "iconPath": "/images/tabs/home.png",
+        "selectedIconPath": "/images/tabs/home-active.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "/images/tabs/message.png",
+        "selectedIconPath": "/images/tabs/message-active.png"
+      },
+      {
+        "pagePath": "pages/travel/travel",
+        "text": "行程",
+        "iconPath": "/images/tabs/message.png",
+        "selectedIconPath": "/images/tabs/message-active.png"
+      },
+      {
+        "pagePath": "pages/our/our",
+        "text": "我的",
+        "iconPath": "/images/tabs/contact.png",
+        "selectedIconPath": "/images/tabs/contact-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

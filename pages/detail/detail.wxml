@@ -1,0 +1,7 @@
+<view class="detail-container">
+  <image src="{{item.img}}" class="detail-img"></image>
+  <view class="detail-title">{{item.title}}</view>
+  <view class="detail-desc">{{item.desc}}</view>
+  <view class="detail-author">作者：{{item.author}}</view>
+  <view class="detail-views">浏览量：{{item.views}}</view>
+</view>
