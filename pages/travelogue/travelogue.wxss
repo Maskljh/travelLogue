@@ -3,38 +3,38 @@
   padding: 16rpx;
   background: #f7f7f7;
 }
+
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  width: 100%;
 }
-.card {
-  width: 48%;
+
+.waterfall-item {
   background: #fff;
   border-radius: 8rpx;
   margin-bottom: 16rpx;
   box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
   overflow: hidden;
 }
-.card-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-.card-content {
+
+.item-content {
   padding: 16rpx;
 }
-.card-title {
+
+.item-title {
   font-weight: bold;
-  font-size: 32rpx;
+  font-size: 28rpx;
   margin-bottom: 8rpx;
+  overflow: hidden;
 }
-.card-desc {
+
+.item-desc {
   color: #888;
   font-size: 24rpx;
   margin-bottom: 12rpx;
+  overflow: hidden;
 }
-.card-footer {
+
+.item-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@
   color: #aaa;
 }
 
-.user-info{
+.user-info {
   display: flex;
   align-items: center;
   gap: 8rpx;

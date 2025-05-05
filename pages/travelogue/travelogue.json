@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "me-waterfall": "me-waterfall/waterfall/index",
+    "me-waterfall-item": "me-waterfall/waterfall-item/index"
   }
 }

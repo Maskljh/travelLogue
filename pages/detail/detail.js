@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    item: null,
+    departTime: '2月',
+    days: '7天',
+    cost: '5.0千',
+    partner: '夫妻',
+    desc: '这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述'
   },
 
   /**
@@ -14,7 +19,7 @@ Page({
   onLoad(options) {
     if (options.item) {
       this.setData({
-        item: JSON.parse(options.item)
+        item: JSON.parse(decodeURIComponent(options.item))
       });
     }
   },

@@ -41,14 +41,25 @@ Page({
         desc: '挤爆了~',
         author: '强哥',
         views: 114
+      },
+      {
+        id: 5,
+        img: '../../images/js.jpg',
+        avatar :'../../images/js.jpg',
+        title: '在无锡！好吃不贵的本帮菜馆',
+        desc: '挤爆了~',
+        author: '强哥',
+        views: 114
       }
     ]
   },
 
   toDetail(e) {
-    const item = e.currentTarget.dataset.item;
+    // const item = e.currentTarget.dataset.item;
+    // JSON.stringify(e.currentTarget.dataset.obj);
+    const item =JSON.stringify(e.currentTarget.dataset.item);
     wx.navigateTo({
-      url: `/pages/detail/detail?item=${JSON.stringify(item)}`
+      url: '/pages/detail/detail?item='+item
     });
   },
 
