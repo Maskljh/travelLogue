@@ -13,15 +13,37 @@ Page({
     desc: '这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述'
   },
 
+  fetchTraveloguesInfo(id) {
+    wx.request({
+      url: 'http://localhost:3000/api/travelogues/'+id,
+      method: 'GET',
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          item: res.data
+        });
+      },
+      fail: (error) => {
+        console.error('获取数据失败：', error);
+        wx.showToast({
+          title: '获取数据失败',
+          icon: 'none'
+        });
+      }
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if (options.item) {
-      this.setData({
-        item: JSON.parse(decodeURIComponent(options.item))
-      });
-    }
+    console.log(options.id)
+    // if (options.item) {
+    //   this.setData({
+    //     item: JSON.parse(decodeURIComponent(options.item))
+    //   });
+    // }
+    this.fetchTraveloguesInfo(options.id)
   },
 
   /**

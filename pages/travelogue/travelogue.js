@@ -5,61 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cards: [
-      {
-        id: 1,
-        img: '../../images/js.jpg',
-        avatar :'../../images/js.jpg',
-        title: '江苏无锡三天两晚旅游攻略',
-        desc: '抓紧收藏！江苏无锡三天两晚旅游攻略来了',
-        author: '小吴要干饭o',
-        views: 2293
+    cards: []
+  },
+
+
+  fetchTravelogues() {
+    wx.request({
+      url: 'http://localhost:3000/api/travelogues',
+      method: 'GET',
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          cards: res.data
+        });
       },
-      {
-        id: 2,
-        img: '../../images/js.jpg',
-        avatar :'../../images/js.jpg',
-        title: '无锡近期热门景点榜',
-        desc: '跟着热点去旅行',
-        author: '旅游研究所',
-        views: 881
-      },
-      {
-        id: 3,
-        img: '../../images/js.jpg',
-        avatar :'../../images/js.jpg',
-        title: '无锡鼋头渚 | 樱花开了',
-        desc: '最美赏樱地。',
-        author: '旅游研究所',
-        views: 881
-      },
-      {
-        id: 4,
-        img: '../../images/js.jpg',
-        avatar :'../../images/js.jpg',
-        title: '在无锡！好吃不贵的本帮菜馆',
-        desc: '挤爆了~',
-        author: '强哥',
-        views: 114
-      },
-      {
-        id: 5,
-        img: '../../images/js.jpg',
-        avatar :'../../images/js.jpg',
-        title: '在无锡！好吃不贵的本帮菜馆',
-        desc: '挤爆了~',
-        author: '强哥',
-        views: 114
+      fail: (error) => {
+        console.error('获取数据失败：', error);
+        wx.showToast({
+          title: '获取数据失败',
+          icon: 'none'
+        });
       }
-    ]
+    });
   },
 
   toDetail(e) {
-    // const item = e.currentTarget.dataset.item;
-    // JSON.stringify(e.currentTarget.dataset.obj);
-    const item =JSON.stringify(e.currentTarget.dataset.item);
+    const id = JSON.stringify(e.currentTarget.dataset.id);
     wx.navigateTo({
-      url: '/pages/detail/detail?item='+item
+      url: '/pages/detail/detail?id=' + id
     });
   },
 
@@ -67,7 +40,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.fetchTravelogues();
   },
 
   /**

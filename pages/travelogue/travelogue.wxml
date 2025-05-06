@@ -1,7 +1,7 @@
 <view class="container">
   <view class="card-list">
     <me-waterfall>
-      <me-waterfall-item wx:for="{{cards}}" wx:key="id" bind:tap="toDetail" data-item="{{item}}">
+      <me-waterfall-item wx:for="{{cards}}" wx:key="id" bind:tap="toDetail" data-id="{{item.id}}">
         <view class="waterfall-item">
           <image src="{{item.img}}" mode="widthFix"/>
           <view class="item-content">
