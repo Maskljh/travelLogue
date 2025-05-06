@@ -1,9 +1,19 @@
 <view class="container">
+  <view class="search-container">
+    <van-search
+      value="{{ searchValue }}"
+      placeholder="搜索游记标题或作者"
+      bind:change="onSearchChange"
+      bind:search="onSearch"
+      shape="round"
+      background="#ffffff"
+    />
+  </view>
   <view class="card-list">
     <me-waterfall>
-      <me-waterfall-item wx:for="{{cards}}" wx:key="id" bind:tap="toDetail" data-id="{{item.id}}">
+      <me-waterfall-item wx:for="{{cards}}" wx:key="id" bind:tap="toDetail" data-id="{{item.id}}" wx:if="{{item.status === 1}}">
         <view class="waterfall-item">
-          <image src="{{item.img}}" mode="widthFix"/>
+          <image src="{{item.imglist[0]}}" mode="widthFix"/>
           <view class="item-content">
             <view class="item-title">{{item.title}}</view>
             <view class="item-desc">{{item.desc}}</view>

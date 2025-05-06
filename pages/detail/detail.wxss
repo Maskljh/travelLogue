@@ -2,11 +2,12 @@
 .detail-container {
   padding: 32rpx 24rpx 140rpx 24rpx;
   background: #f7f7f7;
-  min-height: 100vh;
+}
+swiper{
+  margin-bottom: 30rpx;
 }
 .detail-img {
   width: 100%;
-  border-radius: 16rpx;
   margin-bottom: 28rpx;
   box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.06);
 }
@@ -79,25 +80,24 @@
   left: 0;
   width: 100vw;
   background: #fff;
-  z-index: 99;
   height: 110rpx;
   box-shadow: 0 -2rpx 12rpx rgba(0,0,0,0.04);
+  box-sizing: border-box;
 }
 .detail-bottom-bar .van-icon {
   color: #2b4b6b;
   margin-right: 18rpx;
   transition: color 0.2s;
+  margin-right: 36rpx;
 }
 .detail-bottom-bar .van-icon:active {
   color: #ffb300;
 }
 .comment-input {
   flex: 1;
-  margin-left: 18rpx;
   padding: 16rpx 22rpx;
-  border-radius: 32rpx;
+  border-radius: 16rpx;
   background: #f7f7f7;
-  border: none;
   font-size: 28rpx;
   color: #333;
   box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.03);

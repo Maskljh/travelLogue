@@ -1,5 +1,9 @@
 <view class="detail-container">
-  <image src="{{item.img}}" mode="widthFix" class="detail-img" />
+  <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular autoplay interval="4000">
+    <swiper-item wx:for="{{item.imglist}}" wx:key="index">
+      <image src="{{item}}" mode="widthFix" class="detail-img"></image>
+    </swiper-item>
+  </swiper>
   <view class="detail-title">{{item.title}}</view>
   <view class="user-info">
     <image class="item-ava" src="{{item.avatar}}"></image>

@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cards: []
+    cards: [],
+    searchValue: '',
+    originalCards: [] // 存储原始数据
   },
 
 
@@ -14,9 +16,9 @@ Page({
       url: 'http://localhost:3000/api/travelogues',
       method: 'GET',
       success: (res) => {
-        console.log(res)
         this.setData({
-          cards: res.data
+          cards: res.data,
+          originalCards: res.data // 保存原始数据
         });
       },
       fail: (error) => {
@@ -26,6 +28,35 @@ Page({
           icon: 'none'
         });
       }
+    });
+  },
+
+  onSearchChange(e) {
+    const value = e.detail;
+    this.setData({
+      searchValue: value
+    });
+  },
+
+  onSearch() {
+    const searchValue = this.data.searchValue.toLowerCase();
+    console.log(searchValue)
+    if (!searchValue) {
+      // 如果搜索值为空，显示所有数据
+      this.setData({
+        cards: this.data.originalCards
+      });
+      return;
+    }
+
+    // 搜索标题和作者
+    const filteredCards = this.data.originalCards.filter(card => 
+      card.title.toLowerCase().includes(searchValue) || 
+      card.author.toLowerCase().includes(searchValue)
+    );
+
+    this.setData({
+      cards: filteredCards
     });
   },
 
