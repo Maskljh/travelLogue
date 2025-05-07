@@ -21,7 +21,8 @@ const travelogues = [
     author: '小吴要干饭o',
     views: 2293,
     // 0:待审核、1:已通过、2:未通过
-    status: 1
+    status: 1,
+    reason:''
   },
   {
     id: 2,
@@ -34,7 +35,8 @@ const travelogues = [
     desc: '跟着热点去旅行',
     author: '旅游研究所',
     views: 881,
-    status: 2
+    status: 2,
+    reason:'违反规定'
   },
   {
     id: 3,
@@ -47,7 +49,8 @@ const travelogues = [
     desc: '最美赏樱地。',
     author: '旅游研究所',
     views: 881,
-    status: 1
+    status: 1,
+    reason:''
   },
   {
     id: 4,
@@ -60,7 +63,8 @@ const travelogues = [
     desc: '挤爆了~',
     author: '强哥',
     views: 114,
-    status: 1
+    status: 1,
+    reason:''
   },
   {
     id: 5,
@@ -74,7 +78,8 @@ const travelogues = [
     desc: '挤爆了~',
     author: '强哥',
     views: 114,
-    status: 1
+    status: 1,
+    reason:''
   }
 ];
 
