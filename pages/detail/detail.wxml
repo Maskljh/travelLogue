@@ -1,7 +1,7 @@
 <view class="detail-container">
   <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular autoplay interval="4000">
     <swiper-item wx:for="{{item.imglist}}" wx:key="index">
-      <image src="{{item}}" mode="widthFix" class="detail-img"></image>
+      <image src="{{item}}" mode="widthFix" class="detail-img" bindtap="previewImage" data-src="{{item}}"></image>
     </swiper-item>
   </swiper>
   <view class="detail-title">{{item.title}}</view>

@@ -15,7 +15,7 @@ Page({
 
   fetchTraveloguesInfo(id) {
     wx.request({
-      url: 'http://localhost:3000/api/travelogues/'+id,
+      url: 'http://localhost:5000/api/travelogues/'+id,
       method: 'GET',
       success: (res) => {
         console.log(res)
@@ -93,5 +93,14 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  previewImage(e) {
+    const current = e.currentTarget.dataset.src;
+    console.log(current)
+    wx.previewImage({
+      current: current,
+      urls: this.data.item.imglist
+    });
   }
 })

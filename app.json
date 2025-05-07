@@ -5,7 +5,10 @@
     "pages/message/message",
     "pages/travel/travel",
     "pages/our/our",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/login/login",
+    "pages/edit/edit",
+    "pages/add/add"
   ],
   "window": {
     "backgroundTextStyle": "light",

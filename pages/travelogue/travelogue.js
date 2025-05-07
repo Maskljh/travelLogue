@@ -13,7 +13,7 @@ Page({
 
   fetchTravelogues() {
     wx.request({
-      url: 'http://localhost:3000/api/travelogues',
+      url: 'http://localhost:5000/api/travelogues',
       method: 'GET',
       success: (res) => {
         this.setData({
@@ -85,7 +85,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    // 每次页面显示时重新获取数据
+    this.fetchTravelogues();
   },
 
   /**

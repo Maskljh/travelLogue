@@ -1,1 +1,84 @@
 /* pages/our/our.wxss */
+page{
+  background: #F5F7FA;
+}
+
+.container {
+  padding: 16rpx;
+}
+
+.top-button{
+  margin-bottom: 10rpx;
+}
+
+
+.card-list {
+  width: 100%;
+}
+
+
+.card-item{
+  margin-bottom: 16rpx;
+  /* border: 1px solid red; */
+  background:#fff ;
+}
+
+.item-content {
+  padding: 16rpx;
+  display: flex;
+}
+
+.item-img{
+  flex: 4;
+  padding-right: 40rpx;
+}
+
+.item-img image{
+  width: 100%;
+}
+
+.item-info{
+  flex: 6;
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+}
+
+.item-desc {
+  color: #888;
+  font-size: 24rpx;
+  margin-bottom: 12rpx;
+  overflow: hidden;
+}
+
+.item-footer{
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx;
+}
+
+.van-button{
+  height: 64rpx !important;
+  line-height: 64rpx !important;
+}
+
+.popup-content {
+  padding: 20rpx;
+}
+
+.popup-title {
+  text-align: center;
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+

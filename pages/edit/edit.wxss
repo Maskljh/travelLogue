@@ -1,0 +1,21 @@
+/* pages/edit/edit.wxss */
+page{
+  background: #F5F7FA;
+}
+
+.item-container {
+  margin: 30rpx;
+  background:#fff ;
+  box-sizing: border-box;
+}
+
+
+.image-upload {
+  padding: 30rpx;
+}
+
+.upload-title {
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #323233;
+} 
