@@ -46,6 +46,8 @@ page {
 
 
 .privacy-text {
+  position: fixed;
+  bottom: 20rpx;
   font-size: 24rpx;
   line-height: 48rpx;
   color: #666666;

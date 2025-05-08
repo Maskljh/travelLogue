@@ -20,6 +20,12 @@ Page({
         this.setData({
           cards: res.data,
           originalCards: res.data // 保存原始数据
+        }, () => {
+          // 在数据更新完成后调用reflow
+          const waterfallInstance = this.selectComponent("#waterfall");
+          if (waterfallInstance) {
+            waterfallInstance.reflow();
+          }
         });
       },
       fail: (error) => {
@@ -59,6 +65,9 @@ Page({
     this.setData({
       cards: filteredCards
     });
+
+    const waterfallInstance = this.selectComponent("#waterfall");
+    waterfallInstance.reflow();
   },
 
   toDetail(e) {
@@ -88,6 +97,8 @@ Page({
   onShow() {
     // 每次页面显示时重新获取数据
     this.fetchTravelogues();
+    const waterfallInstance = this.selectComponent("#waterfall");
+    waterfallInstance.reflow();
   },
 
   /**
