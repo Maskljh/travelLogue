@@ -28,7 +28,7 @@
       <text class="info-value">{{partner}}</text>
     </view>
   </view>
-  <view class="detail-desc">{{desc}}</view>
+  <view class="detail-desc">{{item.desc}}</view>
   <view class="detail-views">浏览量：{{item.views}}</view>
 
   <view class="detail-bottom-bar">
