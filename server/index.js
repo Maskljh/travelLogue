@@ -103,7 +103,7 @@ app.get('/api/travelogues', (req, res) => {
   res.json(travelogues);
 });
 
-// 获取单个游记
+// 获取单个游记   id是游记id
 app.get('/api/travelogues/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const travelogue = travelogues.find(t => t.id === id);
@@ -114,7 +114,7 @@ app.get('/api/travelogues/:id', (req, res) => {
   }
 });
 
-// 删除游记
+// 删除游记  游记id
 app.delete('/api/travelogues/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const index = travelogues.findIndex(t => t.id === id);
@@ -129,7 +129,7 @@ app.delete('/api/travelogues/:id', (req, res) => {
   res.json({ message: '删除成功' });
 });
 
-// 更新游记
+// 更新游记    地址需要加游记Id     req需要包括title,desc,imagelist
 app.put('/api/travelogues/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const index = travelogues.findIndex(t => t.id === id);
@@ -165,7 +165,7 @@ app.put('/api/travelogues/:id', (req, res) => {
   res.json({ message: '更新成功', data: travelogues[index] });
 });
 
-// 创建新游记
+// 创建新游记     req需要title, desc, imglist, authorID, avatar, author
 app.post('/api/travelogues', (req, res) => {
   const { title, desc, imglist, authorID, avatar, author } = req.body;
   
