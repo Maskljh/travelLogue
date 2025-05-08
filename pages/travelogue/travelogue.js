@@ -88,7 +88,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    // 在页面渲染完成后重新布局瀑布流
+    setTimeout(() => {
+      const waterfallInstance = this.selectComponent("#waterfall");
+      if (waterfallInstance) {
+        waterfallInstance.reflow();
+      }
+    }, 200);
   },
 
   /**
@@ -97,8 +103,6 @@ Page({
   onShow() {
     // 每次页面显示时重新获取数据
     this.fetchTravelogues();
-    const waterfallInstance = this.selectComponent("#waterfall");
-    waterfallInstance.reflow();
   },
 
   /**

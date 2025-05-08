@@ -206,7 +206,7 @@ app.post('/api/travelogues', (req, res) => {
     desc,
     author, 
     views: 0,
-    status: 1, // 新创建的游记默认状态为待审核
+    status: 0, // 新创建的游记默认状态为待审核
     reason: '',
     isdeleted:false
   };
