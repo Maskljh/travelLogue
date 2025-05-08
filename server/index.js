@@ -14,6 +14,8 @@ const travelogues = [
   {
     // 游记id
     id: 1,
+    // 视频
+    video:'https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4',
     // 游记照片
     imglist:[
       'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
@@ -40,6 +42,7 @@ const travelogues = [
   },
   {
     id: 2,
+    video:'https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4',
     imglist:[
       'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
       'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
@@ -56,6 +59,7 @@ const travelogues = [
   },
   {
     id: 3,
+    video:'https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4',
     imglist:[
       'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
       'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
@@ -72,6 +76,7 @@ const travelogues = [
   },
   {
     id: 4,
+    video:'https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4',
     imglist:[
       'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
       'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
@@ -88,6 +93,7 @@ const travelogues = [
   },
   {
     id: 5,
+    video:'https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4',
     imglist:[
       'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
       'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
