@@ -1,2 +1,14 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<!--pages/login/index.wxml-->
+<view class="root">
+  <view class="login-container">
+    <view>
+      <image src="/images/xc.jpg" mode="aspectFit"></image>
+    </view>
+    <view class="login-button">
+      <button class="wechat-login-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="handleLogin">微信一键登录</button>
+    </view>
+    <view class="privacy-text">
+      我已阅读并同意<text class="privacy-link">《隐私政策》</text>的所有条款。如您的手机号未注册，我们将自动为您注册账号
+    </view>
+  </view>
+</view>

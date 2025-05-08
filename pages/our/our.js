@@ -9,28 +9,36 @@ Page({
   data: {
     show: false,
     currentId: null,  // 添加currentId用于存储当前要删除的id
+    userInfo: null,
+    cards: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // // 检查全局用户信息
-    // if(!app.globalData.userInfo){
-    //   console.log('用户未登录，跳转到登录页面')
-    //   wx.navigateTo({
-    //     url: '/pages/login/login',
-    //     success: function() {
-    //       console.log('跳转成功')
-    //     },
-    //     fail: function(err) {
-    //       console.error('跳转失败', err)
-    //     }
-    //   })
-    // } else {
-    //   console.log('用户已登录', app.globalData.userInfo)
-    // }
-    this.fetchTravelogues();
+    // 获取存储的用户信息
+    const userInfo = app.globalData.userInfo;
+    console.log(userInfo)
+    if (userInfo) {
+      this.setData({
+        userInfo: userInfo
+      });
+      // 只有在用户登录的情况下才获取游记列表
+      this.fetchTravelogues();
+    }
+  },
+
+  toLogin(){
+    wx.navigateTo({
+      url: '/pages/login/login',
+      success: function() {
+        console.log('跳转成功')
+      },
+      fail: function(err) {
+        console.error('跳转失败', err)
+      }
+    })
   },
 
   toDetail(e) {
@@ -94,13 +102,19 @@ Page({
   },
 
   fetchTravelogues() {
+    const openid = app.globalData.openid;
+    if (!openid) {
+      console.error('未获取到用户openid');
+      return;
+    }
+
     wx.request({
-      url: 'http://localhost:5000/api/travelogues',
+      url: 'http://localhost:5000/api/travelogues/user/'+openid,
       method: 'GET',
       success: (res) => {
         this.setData({
           cards: res.data,
-          originalCards: res.data // 保存原始数据
+          originalCards: res.data
         });
       },
       fail: (error) => {
@@ -124,7 +138,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.fetchTravelogues()
+    const userInfo = app.globalData.userInfo;
+    console.log(userInfo)
+    this.setData({
+      userInfo: userInfo
+    });
+    // 只有在用户登录的情况下才获取游记列表
+    if (userInfo) {
+      this.fetchTravelogues();
+    } else {
+      // 如果用户未登录，清空游记列表
+      this.setData({
+        cards: []
+      });
+    }
   },
 
   /**

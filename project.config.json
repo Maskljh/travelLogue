@@ -22,8 +22,10 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "ignoreUploadUnusedFiles": true,
-    "uglifyFileName": true
+    "ignoreUploadUnusedFiles": false,
+    "uglifyFileName": true,
+    "enhance": true,
+    "ignoreDevUnusedFiles": false
   },
   "compileType": "miniprogram",
   "libVersion": "3.7.11",

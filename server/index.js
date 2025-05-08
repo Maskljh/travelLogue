@@ -7,29 +7,42 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
+// 审核id（reviewID），游记id（travelID），作者id（authorID），作者昵称（authorName），游记标题（travelTitle），状态（status 默认为"未审核"），已删除（isdeleted 默认为"false"）
+
 // 模拟数据库数据
 const travelogues = [
   {
+    // 游记id
     id: 1,
+    // 游记照片
     imglist:[
-      '/images/js.jpg',
-      '/images/R-C.jpg'
+      'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
+      'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
+    // 用户id
+    authorID:'asss',
+    // 用户头像
     avatar: '/images/js.jpg',
+    // 游记标题
     title: '江苏无锡三天两晚旅游攻略',
+    // 游记描述
     desc: '抓紧收藏！江苏无锡三天两晚旅游攻略来了',
+    // 用户昵称
     author: '小吴要干饭o',
+    // 看的数量
     views: 2293,
     // 0:待审核、1:已通过、2:未通过
     status: 1,
+    // 未通过原因
     reason:''
   },
   {
     id: 2,
     imglist:[
-      '/images/js.jpg',
-      '/images/R-C.jpg'
+      'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
+      'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
+    authorID:'bsss',
     avatar: '/images/js.jpg',
     title: '无锡近期热门景点榜',
     desc: '跟着热点去旅行',
@@ -41,9 +54,10 @@ const travelogues = [
   {
     id: 3,
     imglist:[
-      '/images/js.jpg',
-      '/images/R-C.jpg'
+      'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
+      'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
+    authorID:'bsss',
     avatar: '/images/js.jpg',
     title: '无锡鼋头渚 | 樱花开了',
     desc: '最美赏樱地。',
@@ -55,9 +69,10 @@ const travelogues = [
   {
     id: 4,
     imglist:[
-      '/images/js.jpg',
-      '/images/R-C.jpg'
+      'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
+      'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
+    authorID:'csss',
     avatar: '/images/js.jpg',
     title: '在无锡！好吃不贵的本帮菜馆',
     desc: '挤爆了~',
@@ -69,9 +84,10 @@ const travelogues = [
   {
     id: 5,
     imglist:[
-      '/images/js.jpg',
-      '/images/R-C.jpg'
+      'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
+      'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
+    authorID:'csss',
     avatar: '/images/js.jpg',
     title: '在无锡！好吃不贵的本帮菜馆',
     desc: '挤爆了~',
@@ -122,13 +138,28 @@ app.put('/api/travelogues/:id', (req, res) => {
     return res.status(404).json({ message: '游记不存在' });
   }
 
+  const { title, desc, imglist } = req.body;
+
+  // 验证必填字段
+  if (!title || !title.trim()) {
+    return res.status(400).json({ message: '标题不能为空' });
+  }
+  
+  if (!desc || !desc.trim()) {
+    return res.status(400).json({ message: '描述不能为空' });
+  }
+  
+  if (!imglist || imglist.length === 0) {
+    return res.status(400).json({ message: '至少需要上传一张图片' });
+  }
+
   // 更新游记信息
   travelogues[index] = {
     ...travelogues[index],
     title: req.body.title,
     desc: req.body.desc,
     imglist: req.body.imglist,
-    status : 0
+    status: 0
   };
   
   res.json({ message: '更新成功', data: travelogues[index] });
@@ -136,7 +167,24 @@ app.put('/api/travelogues/:id', (req, res) => {
 
 // 创建新游记
 app.post('/api/travelogues', (req, res) => {
-  const { title, desc, imglist } = req.body;
+  const { title, desc, imglist, authorID, avatar, author } = req.body;
+  
+  // 验证必填字段
+  if (!title || !title.trim()) {
+    return res.status(400).json({ message: '标题不能为空' });
+  }
+  
+  if (!desc || !desc.trim()) {
+    return res.status(400).json({ message: '描述不能为空' });
+  }
+  
+  if (!imglist || imglist.length === 0) {
+    return res.status(400).json({ message: '至少需要上传一张图片' });
+  }
+  
+  if (!authorID) {
+    return res.status(400).json({ message: '作者ID不能为空' });
+  }
   
   // 生成新ID (当前最大ID + 1)
   const newId = Math.max(...travelogues.map(t => t.id)) + 1;
@@ -145,10 +193,11 @@ app.post('/api/travelogues', (req, res) => {
   const newTravelogue = {
     id: newId,
     imglist: imglist || [],
-    avatar: imglist && imglist.length > 0 ? imglist[0] : '/images/js.jpg',
+    authorID,
+    avatar,
     title,
     desc,
-    author: '当前用户', // 这里可以根据实际需求设置作者信息
+    author, 
     views: 0,
     status: 0, // 新创建的游记默认状态为待审核
     reason: ''
@@ -161,6 +210,20 @@ app.post('/api/travelogues', (req, res) => {
     message: '创建成功', 
     data: newTravelogue 
   });
+});
+
+// 获取用户的所有游记
+app.get('/api/travelogues/user/:openid', (req, res) => {
+  const openid = req.params.openid;
+  
+  if (!openid) {
+    return res.status(400).json({ message: '缺少openid参数' });
+  }
+
+  // 根据openid筛选游记
+  const userTravelogues = travelogues.filter(t => t.authorID === openid);
+  
+  res.json(userTravelogues);
 });
 
 app.listen(port, () => {

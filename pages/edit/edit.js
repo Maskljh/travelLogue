@@ -79,7 +79,33 @@ Page({
   },
 
   onSubmit() {
-    const { id, formData } = this.data;
+    const { formData } = this.data;
+    
+    // 验证必填字段
+    if (!formData.title.trim()) {
+      wx.showToast({
+        title: '请输入标题',
+        icon: 'none'
+      });
+      return;
+    }
+
+    if (!formData.desc.trim()) {
+      wx.showToast({
+        title: '请输入描述',
+        icon: 'none'
+      });
+      return;
+    }
+
+    if (formData.imglist.length === 0) {
+      wx.showToast({
+        title: '请至少上传一张图片',
+        icon: 'none'
+      });
+      return;
+    }
+
     const submitData = {
       title: formData.title,
       desc: formData.desc,
@@ -87,7 +113,7 @@ Page({
     };
 
     wx.request({
-      url: `http://localhost:5000/api/travelogues/${id}`,
+      url: `http://localhost:5000/api/travelogues/${this.data.id}`,
       method: 'PUT',
       data: submitData,
       success: (res) => {

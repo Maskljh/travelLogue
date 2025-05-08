@@ -1,9 +1,22 @@
 <!--pages/our/our.wxml-->
 <view class="container">
-  <view class="top-button">
+  <view class="header-user">
+    <view class="header-user-left">
+      <image src="{{userInfo ? userInfo.avatarUrl : 'https://static-bang.oss-cn-hangzhou.aliyuncs.com/hotelWeapp/mine-guest-avatar.png'}}" />
+    </view>
+    <view class="header-user-right">
+      <view class="login" bind:tap="toLogin" wx:if="{{userInfo === null}}">
+        登录/注册
+      </view>
+      <view class="user-nickname" wx:else>
+        {{userInfo.nickName}}
+      </view>
+    </view>
+  </view>
+  <view class="top-button" wx:if="{{userInfo !== null}}">
     <van-button type="info" custom-style="width: 700rpx;" bind:tap="handleAdd">新增游记</van-button>
   </view>
-  <view class="card-list">
+  <view class="card-list" wx:if="{{userInfo !== null}}">
     <view wx:for="{{cards}}" wx:key="id" class="card-item" bind:tap="toDetail" data-id="{{item.id}}">
       <view class="item-content">
         <view class="item-img">
@@ -21,17 +34,17 @@
           <van-button type="danger" wx:if="{{item.status===2}}">未通过</van-button>
         </view>
         <view>
-          <van-button plain type="info" style="margin-right: 36rpx;" bind:tap="handleDelete" data-id="{{item.id}}">删除</van-button>
+          <van-button plain type="info" style="margin-right: 36rpx;" catch:tap="handleDelete" data-id="{{item.id}}">删除</van-button>
           <van-popup show="{{ show }}" bind:close="onClose" overlay-style="background-color: rgba(0, 0, 0, 0.3);" position="center" custom-style="padding: 20px; min-width: 200px;">
             <view class="popup-content">
               <view class="popup-title">你确定删除吗？</view>
               <view class="popup-buttons">
-                <van-button type="danger" size="small" bind:tap="confirmDelete" data-id="{{currentId}}">确认</van-button>
-                <van-button plain type="info" size="small" bind:tap="onClose" style="margin-left: 20rpx;">取消</van-button>
+                <van-button type="danger" size="small" catch:tap="confirmDelete" data-id="{{currentId}}">确认</van-button>
+                <van-button plain type="info" size="small" catch:tap="onClose" style="margin-left: 20rpx;">取消</van-button>
               </view>
             </view>
           </van-popup>
-          <van-button plain type="info" bind:tap="handleEdit" data-id="{{item.id}}">编辑</van-button>
+          <van-button plain type="info" catch:tap="handleEdit" data-id="{{item.id}}">编辑</van-button>
         </view>
       </view>
     </view>

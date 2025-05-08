@@ -1,1 +1,59 @@
-/* pages/login/login.wxss */
+/* pages/login/index.wxss */
+page {
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 32rpx;
+}
+
+.login-container image {
+  width: 400rpx;
+  height: 400rpx;
+  margin-bottom: 80rpx;
+}
+
+.login-button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.wechat-login-btn {
+  width: 100% !important;
+  height: 88rpx !important;
+  line-height: 88rpx !important;
+  background: #07c160 !important;
+  color: #ffffff !important;
+  font-size: 32rpx !important;
+  border-radius: 16rpx !important;
+  box-shadow: 0 8rpx 16rpx rgba(7, 193, 96, 0.3);
+}
+
+
+.privacy-text {
+  font-size: 24rpx;
+  line-height: 48rpx;
+  color: #666666;
+  text-align: center;
+  padding: 0 32rpx;
+}
+
+.privacy-link {
+  color: #D33720;
+  display: inline;
+}
