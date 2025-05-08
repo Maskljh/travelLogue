@@ -17,7 +17,7 @@
     <van-button type="info" custom-style="width: 700rpx;" bind:tap="handleAdd">新增游记</van-button>
   </view>
   <view class="card-list" wx:if="{{userInfo !== null}}">
-    <view wx:for="{{cards}}" wx:key="id" class="card-item" bind:tap="toDetail" data-id="{{item.id}}">
+    <view wx:for="{{cards}}" wx:key="id" class="card-item" bind:tap="toDetail" data-id="{{item.id}}" wx:if="{{item.isdeleted === false}}">
       <view class="item-content">
         <view class="item-img">
           <image src="{{item.imglist[0]}}" mode="widthFix" />

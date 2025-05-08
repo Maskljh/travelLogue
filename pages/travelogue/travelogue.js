@@ -16,6 +16,7 @@ Page({
       url: 'http://localhost:5000/api/travelogues',
       method: 'GET',
       success: (res) => {
+        console.log(res)
         this.setData({
           cards: res.data,
           originalCards: res.data // 保存原始数据

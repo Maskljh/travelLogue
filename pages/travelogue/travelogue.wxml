@@ -11,7 +11,7 @@
   </view>
   <view class="card-list">
     <me-waterfall>
-      <me-waterfall-item wx:for="{{cards}}" wx:key="id" bind:tap="toDetail" data-id="{{item.id}}" wx:if="{{item.status === 1}}">
+      <me-waterfall-item wx:for="{{cards}}" wx:key="id" bind:tap="toDetail" data-id="{{item.id}}" wx:if="{{item.status === 1 &&    item.isdeleted === false}}">
         <view class="waterfall-item">
           <image src="{{item.imglist[0]}}" mode="widthFix"/>
           <view class="item-content">

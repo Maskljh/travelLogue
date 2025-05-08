@@ -34,7 +34,9 @@ const travelogues = [
     // 0:待审核、1:已通过、2:未通过
     status: 1,
     // 未通过原因
-    reason:''
+    reason:'',
+    // 是否删除
+    isdeleted :false
   },
   {
     id: 2,
@@ -49,7 +51,8 @@ const travelogues = [
     author: '旅游研究所',
     views: 881,
     status: 2,
-    reason:'违反规定'
+    reason:'违反规定',
+    isdeleted :false
   },
   {
     id: 3,
@@ -64,7 +67,8 @@ const travelogues = [
     author: '旅游研究所',
     views: 881,
     status: 1,
-    reason:''
+    reason:'',
+    isdeleted :false
   },
   {
     id: 4,
@@ -79,7 +83,8 @@ const travelogues = [
     author: '强哥',
     views: 114,
     status: 1,
-    reason:''
+    reason:'',
+    isdeleted :false
   },
   {
     id: 5,
@@ -94,7 +99,8 @@ const travelogues = [
     author: '强哥',
     views: 114,
     status: 1,
-    reason:''
+    reason:'',
+    isdeleted :false
   }
 ];
 
@@ -123,8 +129,8 @@ app.delete('/api/travelogues/:id', (req, res) => {
     return res.status(404).json({ message: '游记不存在' });
   }
 
-  // 从数组中删除该游记
-  travelogues.splice(index, 1);
+  // 将游记标记为已删除
+  travelogues[index].isdeleted = true;
   
   res.json({ message: '删除成功' });
 });
@@ -159,7 +165,8 @@ app.put('/api/travelogues/:id', (req, res) => {
     title: req.body.title,
     desc: req.body.desc,
     imglist: req.body.imglist,
-    status: 0
+    status: 0,
+    isdeleted:false
   };
   
   res.json({ message: '更新成功', data: travelogues[index] });
@@ -200,7 +207,8 @@ app.post('/api/travelogues', (req, res) => {
     author, 
     views: 0,
     status: 0, // 新创建的游记默认状态为待审核
-    reason: ''
+    reason: '',
+    isdeleted:false
   };
 
   // 添加到游记列表
