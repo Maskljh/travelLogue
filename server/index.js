@@ -121,6 +121,8 @@ const travelogues = [
   {
     // 游记id
     id: 6,
+    // 视频
+    video: "https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4",
     // 游记照片
     imglist: [
       "https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0",
@@ -173,11 +175,62 @@ const admins = [
 ];
 // 获取所有游记
 app.get("/api/travelogues", (req, res) => {
-  // 修改部分！！！！！
   // 过滤掉已删除的游记
   const activeTravelogues = travelogues.filter((t) => !t.isdeleted);
   // res.json(travelogues);
   res.json(activeTravelogues);
+});
+
+// 根据搜索条件获取游记列表
+// 放在它前面 /api/travelogues/:id
+app.get("/api/travelogues/search", (req, res) => {
+  const { status, reviewID, travelID, authorID, authorName, travelTitle } =
+    req.query;
+
+  // 过滤掉已删除的游记
+  let filteredTravelogues = travelogues.filter((t) => !t.isdeleted);
+
+  // 应用搜索条件
+  if (status) {
+    const statusValues = Array.isArray(status) ? status : [status];
+    filteredTravelogues = filteredTravelogues.filter((t) => {
+      const statusText =
+        t.status === 0 ? "待审核" : t.status === 1 ? "已通过" : "未通过";
+      return statusValues.includes(statusText);
+    });
+  }
+
+  if (reviewID) {
+    filteredTravelogues = filteredTravelogues.filter((t) =>
+      t.id.toString().includes(reviewID)
+    );
+  }
+
+  if (travelID) {
+    filteredTravelogues = filteredTravelogues.filter((t) =>
+      t.id.toString().includes(travelID)
+    );
+  }
+
+  if (authorID) {
+    filteredTravelogues = filteredTravelogues.filter((t) =>
+      t.authorID.toLowerCase().includes(authorID.toLowerCase())
+    );
+  }
+
+  if (authorName) {
+    filteredTravelogues = filteredTravelogues.filter((t) =>
+      t.author.toLowerCase().includes(authorName.toLowerCase())
+    );
+  }
+
+  if (travelTitle) {
+    filteredTravelogues = filteredTravelogues.filter((t) =>
+      t.title.toLowerCase().includes(travelTitle.toLowerCase())
+    );
+  }
+
+  res.json(filteredTravelogues);
 });
 
 // 获取单个游记   id是游记id
