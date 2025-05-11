@@ -300,8 +300,15 @@ app.get("/api/travelogues", (req, res) => {
 // 根据搜索条件获取游记列表
 // 放在它前面 /api/travelogues/:id
 app.get("/api/travelogues/search", (req, res) => {
-  const { status, reviewID, travelID, authorID, authorName, travelTitle } =
-    req.query;
+  const {
+    status,
+    reviewID,
+    travelID,
+    authorID,
+    authorName,
+    travelTitle,
+    page,
+  } = req.query;
 
   // 过滤掉已删除的游记
   let filteredTravelogues = travelogues.filter((t) => !t.isdeleted);
@@ -346,7 +353,18 @@ app.get("/api/travelogues/search", (req, res) => {
     );
   }
 
-  res.json(filteredTravelogues);
+  const pageSize = 10; // 每页显示10条数据
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentPageTravelogues = filteredTravelogues.slice(
+    startIndex,
+    endIndex
+  );
+
+  res.json({
+    total: filteredTravelogues.length,
+    data: currentPageTravelogues,
+  });
 });
 
 // 获取单个游记   id是游记id
