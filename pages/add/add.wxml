@@ -1,19 +1,29 @@
 <!--pages/add/add.wxml-->
 <view class="item-container">
   <van-cell-group class="cell-container">
-    <van-field name="title" label="标题" placeholder="请输入标题" value="{{ formData.title }}" bind:change="onTitleChange" rules="{{ [{ required: true, message: '请填写标题' }] }}" type="textarea" autosize/>
+    <van-field name="title" label="标题" placeholder="请输入标题" value="{{ formData.title }}" bind:change="onTitleChange" rules="{{ [{ required: true, message: '请填写标题' }] }}" type="textarea" autosize required/>
 
-    <van-field name="desc" label="描述" type="textarea" autosize placeholder="请输入描述" value="{{ formData.desc }}" bind:change="onDescChange" rules="{{ [{ required: true, message: '请填写描述' }] }}" />
+    <van-field name="desc" label="描述" required type="textarea" autosize placeholder="请输入描述" value="{{ formData.desc }}" bind:change="onDescChange" rules="{{ [{ required: true, message: '请填写描述' }] }}" />
 
     <view class="image-upload">
-      <view class="upload-title">图片列表</view>
+      <van-field label="图片列表" required/>
       <van-uploader file-list="{{ formData.imglist }}" bind:after-read="afterRead" bind:delete="onDelete" max-count="9" />
     </view>
 
-    <!-- <view class="video-upload">
-      <view class="upload-title">视频</view>
-      <van-uploader file-list="{{ formData.video }}" bind:after-read="afterRead" bind:delete="onDelete" max-count="1" />
-    </view> -->
+    <view class="video-upload">
+      <van-field label="视频"/>
+      <view class="video-container">
+        <block wx:if="{{!formData.video}}">
+          <van-button icon="plus" type="primary" bind:tap="chooseVideo">选择视频</van-button>
+        </block>
+        <block wx:else>
+          <view class="video-preview">
+            <video src="{{formData.video.url}}" class="video-player"></video>
+            <van-icon name="delete" class="delete-icon" bind:tap="deleteVideo" />
+          </view>
+        </block>
+      </view>
+    </view>
 
     <view style="padding: 16px;">
       <van-button round block type="primary" form-type="submit" bind:tap="onSubmit">保存</van-button>

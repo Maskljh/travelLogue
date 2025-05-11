@@ -1,6 +1,8 @@
 <view class="detail-container">
-  <video src="{{item.video}}"></video>
-  <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular autoplay interval="4000">
+  <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular autoplay="{{!isVideoPlaying}}" interval="4000" current="{{currentIndex}}">
+    <swiper-item wx:if="{{item.video}}">
+      <video src="{{item.video}}" class="detail-video" show-fullscreen-btn controls bindended="onVideoEnd" bindplay="onVideoPlay" bindpause="onVideoPause"></video>
+    </swiper-item>
     <swiper-item wx:for="{{item.imglist}}" wx:key="index">
       <image src="{{item}}" mode="widthFix" class="detail-img" bindtap="previewImage" data-src="{{item}}"></image>
     </swiper-item>
@@ -31,6 +33,7 @@
   </view>
   <view class="detail-desc">{{item.desc}}</view>
   <view class="detail-views">浏览量：{{item.views}}</view>
+  <view class="detail-views">发表时间：{{item.time}}</view>
 
   <view class="detail-bottom-bar">
     <van-icon name="good-job-o" size="48rpx" />

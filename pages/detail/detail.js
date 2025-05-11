@@ -10,12 +10,14 @@ Page({
     days: '7天',
     cost: '5.0千',
     partner: '夫妻',
-    desc: '这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述'
+    desc: '这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述这是一大段描述',
+    isVideoPlaying: false,
+    currentIndex: 0
   },
 
   fetchTraveloguesInfo(id) {
     wx.request({
-      url: 'http://localhost:5000/api/travelogues/'+id,
+      url: 'http://192.168.0.142:5000/api/travelogues/'+id,
       method: 'GET',
       success: (res) => {
         console.log(res)
@@ -101,6 +103,25 @@ Page({
     wx.previewImage({
       current: current,
       urls: this.data.item.imglist
+    });
+  },
+
+  onVideoPlay() {
+    this.setData({
+      isVideoPlaying: true
+    });
+  },
+
+  onVideoPause() {
+    this.setData({
+      isVideoPlaying: false
+    });
+  },
+
+  onVideoEnd() {
+    this.setData({
+      isVideoPlaying: false,
+      currentIndex: 1  // 视频播放完成后，切换到第一张图片
     });
   }
 })

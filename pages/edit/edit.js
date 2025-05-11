@@ -5,7 +5,8 @@ Page({
     formData: {
       title: '',
       desc: '',
-      imglist: []
+      imglist: [],
+      video: null
     }
   },
 
@@ -18,7 +19,7 @@ Page({
 
   fetchTravelogueDetail(id) {
     wx.request({
-      url: `http://localhost:5000/api/travelogues/${id}`,
+      url: `http://192.168.0.142:5000/api/travelogues/${id}`,
       method: 'GET',
       success: (res) => {
         const data = res.data;
@@ -28,7 +29,10 @@ Page({
             desc: data.desc,
             imglist: data.imglist.map(url => ({
               url: url
-            }))
+            })),
+            video: data.video ? {
+              url: data.video
+            } : null
           }
         });
         console.log(this.data.formData.imglist)
@@ -57,8 +61,7 @@ Page({
 
   afterRead(event) {
     const { file } = event.detail;
-    // 这里可以添加上传图片到服务器的逻辑
-    // 暂时直接添加到列表中
+    // 处理图片上传
     const imglist = [...this.data.formData.imglist];
     imglist.push({
       url: file.url,
@@ -75,6 +78,33 @@ Page({
     imglist.splice(index, 1);
     this.setData({
       'formData.imglist': imglist
+    });
+  },
+
+  // 选择视频
+  chooseVideo() {
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['video'],
+      sourceType: ['album', 'camera'],
+      maxDuration: 60,
+      camera: 'back',
+      success: (res) => {
+        const tempFilePath = res.tempFiles[0].tempFilePath;
+        this.setData({
+          'formData.video': {
+            url: tempFilePath,
+            name: 'video'
+          }
+        });
+      }
+    });
+  },
+
+  // 删除视频
+  deleteVideo() {
+    this.setData({
+      'formData.video': null
     });
   },
 
@@ -109,11 +139,12 @@ Page({
     const submitData = {
       title: formData.title,
       desc: formData.desc,
-      imglist: formData.imglist.map(item => item.url)
+      imglist: formData.imglist.map(item => item.url),
+      video: formData.video ? formData.video.url : null
     };
 
     wx.request({
-      url: `http://localhost:5000/api/travelogues/${this.data.id}`,
+      url: `http://192.168.0.142:5000/api/travelogues/${this.data.id}`,
       method: 'PUT',
       data: submitData,
       success: (res) => {

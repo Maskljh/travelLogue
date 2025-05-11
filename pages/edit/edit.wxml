@@ -10,10 +10,20 @@
       <van-uploader file-list="{{ formData.imglist }}" bind:after-read="afterRead" bind:delete="onDelete" max-count="9" required />
     </view>
 
-    <!-- <view class="video-upload">
-      <view class="upload-title">视频</view>
-      <van-uploader file-list="{{ formData.video }}" bind:after-read="afterRead" bind:delete="onDelete" max-count="1" />
-    </view> -->
+    <view class="video-upload">
+      <van-field label="视频"/>
+      <view class="video-container">
+        <block wx:if="{{!formData.video}}">
+          <van-button icon="plus" type="primary" bind:tap="chooseVideo">选择视频</van-button>
+        </block>
+        <block wx:else>
+          <view class="video-preview">
+            <video src="{{formData.video.url}}" class="video-player"></video>
+            <van-icon name="delete" class="delete-icon" bind:tap="deleteVideo" />
+          </view>
+        </block>
+      </view>
+    </view>
 
     <view style="padding: 16px;">
       <van-button round block type="primary" form-type="submit" bind:tap="onSubmit">保存</van-button>

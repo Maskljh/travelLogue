@@ -24,7 +24,7 @@ const travelogues = [
     // 用户id
     authorID:'asss',
     // 用户头像
-    avatar: '/images/js.jpg',
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     // 游记标题
     title: '江苏无锡三天两晚旅游攻略',
     // 游记描述
@@ -38,7 +38,9 @@ const travelogues = [
     // 未通过原因
     reason:'',
     // 是否删除
-    isdeleted :false
+    isdeleted :false,
+    // 时间
+    time :'2025-05-01 19:02:03'
   },
   {
     id: 2,
@@ -48,31 +50,33 @@ const travelogues = [
       'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
     authorID:'bsss',
-    avatar: '/images/js.jpg',
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: '无锡近期热门景点榜',
     desc: '跟着热点去旅行',
     author: '旅游研究所',
     views: 881,
     status: 2,
     reason:'违反规定',
-    isdeleted :false
+    isdeleted :false,
+    time :'2025-05-01 19:02:03'
   },
   {
     id: 3,
-    video:'https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4',
+    video:null,
     imglist:[
       'https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0',
       'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
     authorID:'bsss',
-    avatar: '/images/js.jpg',
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: '无锡鼋头渚 | 樱花开了',
     desc: '最美赏樱地。',
     author: '旅游研究所',
     views: 881,
     status: 1,
     reason:'',
-    isdeleted :false
+    isdeleted :false,
+    time :'2025-05-01 19:02:03'
   },
   {
     id: 4,
@@ -82,14 +86,15 @@ const travelogues = [
       'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
     authorID:'csss',
-    avatar: '/images/js.jpg',
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: '在无锡！好吃不贵的本帮菜馆',
     desc: '挤爆了~',
     author: '强哥',
     views: 114,
     status: 1,
     reason:'',
-    isdeleted :false
+    isdeleted :false,
+    time :'2025-05-01 19:02:03'
   },
   {
     id: 5,
@@ -99,14 +104,15 @@ const travelogues = [
       'https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7'
     ],
     authorID:'csss',
-    avatar: '/images/js.jpg',
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: '在无锡！好吃不贵的本帮菜馆',
     desc: '挤爆了~',
     author: '强哥',
     views: 114,
     status: 1,
     reason:'',
-    isdeleted :false
+    isdeleted :false,
+    time :'2025-05-01 19:02:03'
   }
 ];
 
@@ -150,7 +156,7 @@ app.put('/api/travelogues/:id', (req, res) => {
     return res.status(404).json({ message: '游记不存在' });
   }
 
-  const { title, desc, imglist } = req.body;
+  const { title, desc, imglist, video } = req.body;
 
   // 验证必填字段
   if (!title || !title.trim()) {
@@ -172,7 +178,8 @@ app.put('/api/travelogues/:id', (req, res) => {
     desc: req.body.desc,
     imglist: req.body.imglist,
     status: 0,
-    isdeleted:false
+    isdeleted:false,
+    video
   };
   
   res.json({ message: '更新成功', data: travelogues[index] });
@@ -180,7 +187,7 @@ app.put('/api/travelogues/:id', (req, res) => {
 
 // 创建新游记     req需要title, desc, imglist, authorID, avatar, author
 app.post('/api/travelogues', (req, res) => {
-  const { title, desc, imglist, authorID, avatar, author } = req.body;
+  const { title, desc, imglist, authorID, avatar, author, time,video } = req.body;
   
   // 验证必填字段
   if (!title || !title.trim()) {
@@ -214,7 +221,9 @@ app.post('/api/travelogues', (req, res) => {
     views: 0,
     status: 0, // 新创建的游记默认状态为待审核
     reason: '',
-    isdeleted:false
+    isdeleted:false,
+    time,
+    video
   };
 
   // 添加到游记列表
@@ -240,6 +249,6 @@ app.get('/api/travelogues/user/:openid', (req, res) => {
   res.json(userTravelogues);
 });
 
-app.listen(port, () => {
-  console.log(`服务器运行在 http://localhost:${port}`);
+app.listen(port, '192.168.0.142', () => {
+  console.log(`服务器运行在 http://192.168.0.142:${port}`);
 }); 
