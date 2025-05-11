@@ -147,6 +147,108 @@ const travelogues = [
     // 是否删除
     isdeleted: false,
   },
+  {
+    id: 7,
+    video: "https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4",
+    imglist: [
+      "https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0",
+      "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
+    ],
+    authorID: "esss",
+    avatar: "/images/js.jpg",
+    title: "杭州西湖一日游攻略",
+    desc: "西湖美景让人流连忘返",
+    author: "旅行达人",
+    views: 0,
+    status: 0,
+    reason: "",
+    isdeleted: false,
+  },
+  {
+    id: 8,
+    video: "https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4",
+    imglist: [
+      "https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0",
+      "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
+    ],
+    authorID: "fsss",
+    avatar: "/images/js.jpg",
+    title: "上海外滩夜景打卡",
+    desc: "魔都夜景太美了",
+    author: "城市探索者",
+    views: 0,
+    status: 0,
+    reason: "",
+    isdeleted: false,
+  },
+  {
+    id: 9,
+    video: "https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4",
+    imglist: [
+      "https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0",
+      "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
+    ],
+    authorID: "gsss",
+    avatar: "/images/js.jpg",
+    title: "北京故宫博物院游览指南",
+    desc: "感受历史的厚重",
+    author: "文化探索者",
+    views: 0,
+    status: 0,
+    reason: "",
+    isdeleted: false,
+  },
+  {
+    id: 10,
+    video: "https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4",
+    imglist: [
+      "https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0",
+      "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
+    ],
+    authorID: "hsss",
+    avatar: "/images/js.jpg",
+    title: "广州美食地图",
+    desc: "舌尖上的广州",
+    author: "美食家",
+    views: 0,
+    status: 0,
+    reason: "",
+    isdeleted: false,
+  },
+  {
+    id: 11,
+    video: "https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4",
+    imglist: [
+      "https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0",
+      "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
+    ],
+    authorID: "isss",
+    avatar: "/images/js.jpg",
+    title: "深圳湾公园漫步",
+    desc: "现代都市中的自然风光",
+    author: "城市漫步者",
+    views: 0,
+    status: 0,
+    reason: "",
+    isdeleted: false,
+  },
+  {
+    id: 12,
+    video: "https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4",
+    imglist: [
+      "https://ts1.tc.mm.bing.net/th/id/R-C.694364eb1a65398351c3e529eff28242?rik=oCRYPRPiv7YqnQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20210510ac%2f133%2fw2000h1333%2f20210510%2ff096-kpuunnc9067523.jpg&ehk=jgTCFsvwMEyrP%2bWdBHLnKKxrb54iZkNKR9783iB1qWo%3d&risl=&pid=ImgRaw&r=0",
+      "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
+    ],
+    authorID: "jsss",
+    avatar: "/images/js.jpg",
+    title: "成都宽窄巷子游记",
+    desc: "感受老成都的悠闲生活",
+    author: "慢生活家",
+    views: 0,
+    status: 0,
+    reason: "",
+    isdeleted: false,
+  },
 ];
 
 // 模拟审核员数据
@@ -173,12 +275,26 @@ const admins = [
     role: "管理员",
   },
 ];
+
 // 获取所有游记
 app.get("/api/travelogues", (req, res) => {
+  const { page } = req.query;
   // 过滤掉已删除的游记
   const activeTravelogues = travelogues.filter((t) => !t.isdeleted);
-  // res.json(travelogues);
-  res.json(activeTravelogues);
+
+  // 如果传入了 page 参数，则进行分页
+  if (page) {
+    const pageSize = 10; // 每页显示10条数据
+    const startIndex = (page - 1) * pageSize; // 前面的不显示
+    const endIndex = startIndex + pageSize; // 后面的不显示
+    const currentPageTravelogues = activeTravelogues.slice(
+      startIndex,
+      endIndex
+    );
+    res.json({ total: activeTravelogues.length, data: currentPageTravelogues });
+  } else {
+    res.json(activeTravelogues);
+  }
 });
 
 // 根据搜索条件获取游记列表
@@ -358,7 +474,6 @@ app.get("/api/travelogues/user/:openid", (req, res) => {
   res.json(userTravelogues);
 });
 
-// 新增 ！！！！！！！
 const fs = require("fs");
 const path = require("path");
 
