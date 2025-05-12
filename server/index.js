@@ -68,7 +68,7 @@ const travelogues = [
     status: 2,
     reason:'违反规定',
     isdeleted :false,
-    time :'2025-05-01 19:02:03'
+    time :'2025-05-01 19:02:04'
   },
   {
     id: 3,
@@ -86,7 +86,7 @@ const travelogues = [
     status: 1,
     reason:'',
     isdeleted :false,
-    time :'2025-05-01 19:02:03'
+    time :'2025-05-01 19:02:05'
   },
   {
     id: 4,
@@ -104,7 +104,7 @@ const travelogues = [
     status: 1,
     reason:'',
     isdeleted :false,
-    time :'2025-05-01 19:02:03'
+    time :'2025-05-01 19:02:06'
   },
   {
     id: 5,
@@ -114,7 +114,7 @@ const travelogues = [
       "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
     ],
     authorID: "csss",
-    avatar: "/images/js.jpg",
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: "在无锡！好吃不贵的本帮菜馆",
     desc: "挤爆了~",
     author: "强哥",
@@ -122,6 +122,7 @@ const travelogues = [
     status: 1,
     reason: "",
     isdeleted: false,
+    time :'2025-05-01 19:02:07'
   },
   {
     // 游记id
@@ -136,7 +137,7 @@ const travelogues = [
     // 用户id
     authorID: "dsss",
     // 用户头像
-    avatar: "/images/js.jpg",
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     // 游记标题
     title: "西藏自驾游旅游攻略",
     // 游记描述
@@ -151,6 +152,7 @@ const travelogues = [
     reason: "",
     // 是否删除
     isdeleted: false,
+    time :'2025-05-01 19:02:08'
   },
   {
     id: 7,
@@ -160,7 +162,7 @@ const travelogues = [
       "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
     ],
     authorID: "esss",
-    avatar: "/images/js.jpg",
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: "杭州西湖一日游攻略",
     desc: "西湖美景让人流连忘返",
     author: "旅行达人",
@@ -168,6 +170,7 @@ const travelogues = [
     status: 0,
     reason: "",
     isdeleted: false,
+    time :'2025-05-01 19:02:09'
   },
   {
     id: 8,
@@ -177,7 +180,7 @@ const travelogues = [
       "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
     ],
     authorID: "fsss",
-    avatar: "/images/js.jpg",
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: "上海外滩夜景打卡",
     desc: "魔都夜景太美了",
     author: "城市探索者",
@@ -185,6 +188,7 @@ const travelogues = [
     status: 0,
     reason: "",
     isdeleted: false,
+    time :'2025-05-01 19:02:10'
   },
   {
     id: 9,
@@ -194,7 +198,7 @@ const travelogues = [
       "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
     ],
     authorID: "gsss",
-    avatar: "/images/js.jpg",
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: "北京故宫博物院游览指南",
     desc: "感受历史的厚重",
     author: "文化探索者",
@@ -202,6 +206,7 @@ const travelogues = [
     status: 0,
     reason: "",
     isdeleted: false,
+    time :'2025-05-01 19:02:11'
   },
   {
     id: 10,
@@ -211,7 +216,7 @@ const travelogues = [
       "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
     ],
     authorID: "hsss",
-    avatar: "/images/js.jpg",
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: "广州美食地图",
     desc: "舌尖上的广州",
     author: "美食家",
@@ -219,6 +224,7 @@ const travelogues = [
     status: 0,
     reason: "",
     isdeleted: false,
+    time :'2025-05-01 19:02:12'
   },
   {
     id: 11,
@@ -228,7 +234,7 @@ const travelogues = [
       "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
     ],
     authorID: "isss",
-    avatar: "/images/js.jpg",
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: "深圳湾公园漫步",
     desc: "现代都市中的自然风光",
     author: "城市漫步者",
@@ -236,6 +242,7 @@ const travelogues = [
     status: 0,
     reason: "",
     isdeleted: false,
+    time :'2025-05-01 19:02:13'
   },
   {
     id: 12,
@@ -245,7 +252,7 @@ const travelogues = [
       "https://tse2-mm.cn.bing.net/th/id/OIP-C.QaWJbuoHou3GxKSnxkHVywHaEK?w=364&h=180&c=7&r=0&o=5&pid=1.7",
     ],
     authorID: "jsss",
-    avatar: "/images/js.jpg",
+    avatar: 'https://youimg1.c-ctrip.com/target/100k0e00000073dqv4D1C_D_10000_1200.jpg?proc=autoorient',
     title: "成都宽窄巷子游记",
     desc: "感受老成都的悠闲生活",
     author: "慢生活家",
@@ -253,6 +260,7 @@ const travelogues = [
     status: 0,
     reason: "",
     isdeleted: false,
+    time :'2025-05-01 19:02:14'
   },
 ];
 
@@ -625,7 +633,7 @@ app.get("/api/admin/status", authMiddleware, (req, res) => {
   });
 });
 
-app.listen(port, '192.168.0.142', () => {
-  console.log(`服务器运行在 http://192.168.0.142:${port}`);
+app.listen(port, 'localhost', () => {
+  console.log(`服务器运行在 http://localhost:${port}`);
 }); 
 

@@ -118,7 +118,7 @@ Page({
     };
 
     wx.request({
-      url: `http://192.168.0.142:5000/api/travelogues`,
+      url: `http://localhost:5000/api/travelogues`,
       method: 'POST',
       data: submitData,
       success: (res) => {

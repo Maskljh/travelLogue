@@ -17,7 +17,7 @@ Page({
 
   fetchTraveloguesInfo(id) {
     wx.request({
-      url: 'http://192.168.0.142:5000/api/travelogues/'+id,
+      url: 'http://localhost:5000/api/travelogues/'+id,
       method: 'GET',
       success: (res) => {
         console.log(res)
