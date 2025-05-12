@@ -47,6 +47,7 @@
           <van-button plain type="info" catch:tap="handleEdit" data-id="{{item.id}}">编辑</van-button>
         </view>
       </view>
+      <view class="footer-text" wx:if="{{item.status === 2 && item.reason}}">未通过原因：{{item.reason}}</view>
     </view>
   </view>
 </view>

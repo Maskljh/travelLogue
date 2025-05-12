@@ -96,6 +96,10 @@ image {
   padding: 16rpx;
 }
 
+.footer-text{
+  padding: 0 16rpx;
+}
+
 .van-button{
   height: 64rpx !important;
   line-height: 64rpx !important;

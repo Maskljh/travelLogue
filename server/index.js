@@ -2,9 +2,54 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const { generateToken, authMiddleware } = require("./auth");
+const multer = require("multer");
+const path = require("path");
+const fs = require('fs');
 
 const app = express();
 const port = 5000;
+
+// 指定上传目录
+const DESKTOP_PATH = 'C:\\Users\\17870\\Desktop';
+const IMAGE_DIR = path.join(DESKTOP_PATH, 'image');
+const VIDEO_DIR = path.join(DESKTOP_PATH, 'video');
+
+// 确保目录存在
+if (!fs.existsSync(IMAGE_DIR)) {
+  fs.mkdirSync(IMAGE_DIR, { recursive: true });
+}
+if (!fs.existsSync(VIDEO_DIR)) {
+  fs.mkdirSync(VIDEO_DIR, { recursive: true });
+}
+
+// 配置文件上传
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    // 根据文件类型选择不同的存储目录
+    const uploadDir = file.mimetype.startsWith('image/') ? IMAGE_DIR : VIDEO_DIR;
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    // 生成文件名：时间戳 + 随机数 + 原始扩展名
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  limits: {
+    fileSize: 50 * 1024 * 1024 // 限制50MB，视频文件通常较大
+  },
+  fileFilter: function (req, file, cb) {
+    // 允许图片和视频文件
+    if (file.mimetype.startsWith('image/') || file.mimetype.startsWith('video/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('只允许上传图片或视频文件！'), false);
+    }
+  }
+});
 
 // 启用CORS
 // app.use(cors());
@@ -16,6 +61,9 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+
+// 静态文件服务
+app.use('/uploads', express.static(DESKTOP_PATH));
 
 // 审核id（reviewID），游记id（travelID），作者id（authorID），作者昵称（authorName），游记标题（travelTitle），状态（status 默认为"未审核"），已删除（isdeleted 默认为"false"）
 
@@ -446,7 +494,7 @@ app.put("/api/travelogues/:id", (req, res) => {
 
 // 创建新游记     req需要title, desc, imglist, authorID, avatar, author
 app.post('/api/travelogues', (req, res) => {
-  const { title, desc, imglist, authorID, avatar, author, time,video } = req.body;
+  const { title, desc, imglist, authorID, avatar, author, time, video, reason } = req.body;
   
   // 验证必填字段
   if (!title || !title.trim()) {
@@ -482,7 +530,8 @@ app.post('/api/travelogues', (req, res) => {
     reason: '',
     isdeleted:false,
     time,
-    video
+    video,
+    reason
   };
 
   // 添加到游记列表
@@ -508,9 +557,6 @@ app.get("/api/travelogues/user/:openid", (req, res) => {
   res.json(userTravelogues);
 });
 
-
-const fs = require("fs");
-const path = require("path");
 
 // 添加图片路由
 app.get("/api/images/:filename", (req, res) => {
@@ -630,6 +676,20 @@ app.get("/api/admin/status", authMiddleware, (req, res) => {
   res.json({
     isAuthenticated: true,
     adminInfo: req.adminInfo,
+  });
+});
+
+// 添加文件上传接口
+app.post('/api/upload', upload.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: '没有上传文件' });
+  }
+  
+  // 返回文件的访问URL
+  const fileUrl = `http://localhost:${port}/uploads/${path.basename(req.file.destination)}/${req.file.filename}`;
+  res.json({
+    message: '上传成功',
+    url: fileUrl
   });
 });
 

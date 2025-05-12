@@ -68,6 +68,48 @@ Page({
 
   },
 
+  getUserInfo(e) {
+    var _this = this
+    wx.showModal({
+      title: '温馨提示',
+      content: '亲，授权微信登录后才能正常使用小程序功能',
+      success(res) {
+        console.log(res)
+        //如果用户点击了确定按钮
+        if (res.confirm) {
+          wx.getUserProfile({
+            desc: '获取你的昵称、头像、地区及性别',
+            success: res => {
+              _this.setData({
+                userInfo: res.userInfo,
+              })
+              console.log(res);
+              console.log(1);
+            },
+            fail: res => {
+              console.log(res)
+              //拒绝授权
+              wx.showToast({
+                title: '您拒绝了请求,不能正常使用小程序',
+                icon: 'error',
+                duration: 2000
+              });
+              return;
+            }
+          });
+        } else if (res.cancel) {
+          //如果用户点击了取消按钮
+          wx.showToast({
+            title: '您拒绝了请求,不能正常使用小程序',
+            icon: 'error',
+            duration: 2000
+          });
+          return;
+        }
+      }
+    })
+  },
+
   handleLogin(e) {
     console.log(e)
     if (e.detail.userInfo) {
@@ -89,10 +131,6 @@ Page({
               success: (response) => {
                 console.log('code2Session response:', response)
                 if (response.data.openid) {
-                  // // 存储用户信息
-                  // wx.setStorageSync('openid', response.data.openid);
-                  // wx.setStorageSync('session_key', response.data.session_key);
-                  // wx.setStorageSync('userInfo', e.detail.userInfo);
                   
                   // 更新全局数据
                   app.globalData.userInfo = e.detail.userInfo;
