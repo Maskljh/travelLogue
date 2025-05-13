@@ -29,4 +29,6 @@
       </me-waterfall-item>
     </me-waterfall>
   </view>
+  <!-- <view class="backtop" bindtap="backtop"> ↑ </view> -->
+  <van-icon name="back-top" class="backtop" bindtap="backtop"/>
 </view>

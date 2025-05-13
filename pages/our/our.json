@@ -3,5 +3,6 @@
     "van-button": "@vant/weapp/button/index",
     "van-popup": "@vant/weapp/popup/index"
   },
-  "navigationBarTitleText": "我的游记"
+  "navigationBarTitleText": "我的游记",
+  "enablePullDownRefresh": true
 }

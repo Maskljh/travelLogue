@@ -172,7 +172,20 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    const userInfo = app.globalData.userInfo;
+    console.log(userInfo)
+    this.setData({
+      userInfo: userInfo
+    });
+    // 只有在用户登录的情况下才获取游记列表
+    if (userInfo) {
+      this.fetchTravelogues();
+    } else {
+      // 如果用户未登录，清空游记列表
+      this.setData({
+        cards: []
+      });
+    }
   },
 
   /**

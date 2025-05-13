@@ -36,9 +36,9 @@
   <view class="detail-views">发表时间：{{item.time}}</view>
 
   <view class="detail-bottom-bar">
-    <van-icon name="good-job-o" size="48rpx" />
+    <van-icon name="{{isLiked ? 'good-job' : 'good-job-o'}}" size="48rpx" color="{{isLiked ? '#ff4d4f' : ''}}" bindtap="onLikeClick" />
     <van-icon name="chat-o" size="48rpx" />
-    <van-icon name="like-o" size="48rpx" />
+    <van-icon name="{{isFavorited ? 'like' : 'like-o'}}" size="48rpx" color="{{isFavorited ? '#ff4d4f' : ''}}" bindtap="onFavoriteClick" />
     <input class="comment-input" placeholder="写评论走个心" />
   </view>
 </view>

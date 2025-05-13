@@ -11,7 +11,9 @@ Page({
     cost: '5.0千',
     partner: '夫妻',
     isVideoPlaying: false,
-    currentIndex: 0
+    currentIndex: 0,
+    isLiked: false,
+    isFavorited: false
   },
 
   fetchTraveloguesInfo(id) {
@@ -20,8 +22,13 @@ Page({
       method: 'GET',
       success: (res) => {
         console.log(res)
+        const item = res.data;
+        const likedList = wx.getStorageSync('likedList') || [];
+        const favoritedList = wx.getStorageSync('favoritedList') || [];
         this.setData({
-          item: res.data
+          item,
+          isLiked: likedList.includes(item.id),
+          isFavorited: favoritedList.includes(item.id)
         });
       },
       fail: (error) => {
@@ -121,6 +128,48 @@ Page({
     this.setData({
       isVideoPlaying: false,
       currentIndex: 1  // 视频播放完成后，切换到第一张图片
+    });
+  },
+
+  onLikeClick() {
+    const id = this.data.item.id;
+    let likedList = wx.getStorageSync('likedList') || [];
+    let isLiked = likedList.includes(id);
+
+    if (isLiked) {
+      likedList = likedList.filter(itemId => itemId !== id);
+    } else {
+      likedList.push(id);
+    }
+    wx.setStorageSync('likedList', likedList);
+
+    this.setData({
+      isLiked: !isLiked
+    });
+    wx.showToast({
+      title: !isLiked ? '点赞成功' : '取消点赞',
+      icon: 'none'
+    });
+  },
+
+  onFavoriteClick() {
+    const id = this.data.item.id;
+    let favoritedList = wx.getStorageSync('favoritedList') || [];
+    let isFavorited = favoritedList.includes(id);
+
+    if (isFavorited) {
+      favoritedList = favoritedList.filter(itemId => itemId !== id);
+    } else {
+      favoritedList.push(id);
+    }
+    wx.setStorageSync('favoritedList', favoritedList);
+
+    this.setData({
+      isFavorited: !isFavorited
+    });
+    wx.showToast({
+      title: !isFavorited ? '收藏成功' : '取消收藏',
+      icon: 'none'
     });
   }
 })
