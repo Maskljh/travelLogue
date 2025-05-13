@@ -1,5 +1,8 @@
 <!--pages/our/our.wxml-->
-<view class="container">
+<view class="custom-navbar" style="height:{{navBarHeight}};padding-top:env(safe-area-inset-top);">
+  <van-nav-bar title="我的" left-text="+新增游记" bind:click-left="handleAdd" />
+</view>
+<view class="container" style="padding-top:{{navBarHeight}};">
   <view class="header-user">
     <view class="header-user-left">
       <image src="{{userInfo ? userInfo.avatarUrl : 'https://static-bang.oss-cn-hangzhou.aliyuncs.com/hotelWeapp/mine-guest-avatar.png'}}" />
@@ -13,9 +16,9 @@
       </view>
     </view>
   </view>
-  <view class="top-button" wx:if="{{userInfo !== null}}">
+  <!-- <view class="top-button" wx:if="{{userInfo !== null}}">
     <van-button type="info" custom-style="width: 700rpx;" bind:tap="handleAdd">新增游记</van-button>
-  </view>
+  </view> -->
   <view class="card-list" wx:if="{{userInfo !== null}}">
     <view wx:for="{{cards}}" wx:key="id" class="card-item" bind:tap="toDetail" data-id="{{item.id}}" wx:if="{{item.isdeleted === false}}">
       <view class="item-content">

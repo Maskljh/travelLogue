@@ -10,7 +10,8 @@ Page({
     show: false,
     currentId: null,  // 添加currentId用于存储当前要删除的id
     userInfo: null,
-    cards: []
+    cards: [],
+    navBarHeight: '88rpx' // 默认高度，防止未获取到时出错
   },
 
   /**
@@ -27,6 +28,13 @@ Page({
       // 只有在用户登录的情况下才获取游记列表
       this.fetchTravelogues();
     }
+    const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+    const statusBarHeight = wx.getSystemInfoSync().statusBarHeight;
+    // 导航栏高度 = 胶囊bottom + 胶囊top - 状态栏高度
+    const navBarHeight = menuButtonInfo.bottom + menuButtonInfo.top - statusBarHeight;
+    this.setData({
+      navBarHeight: navBarHeight + 'px'
+    });
   },
 
   toLogin(){
@@ -95,7 +103,19 @@ Page({
     });
   },
 
-  handleAdd(){
+  handleAdd() {
+    if (!this.data.userInfo) {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      });
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        });
+      }, 1000);
+      return;
+    }
     wx.navigateTo({
       url: '/pages/add/add'
     });
@@ -200,5 +220,17 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  onClickLeft() {
+    wx.navigateBack();
+  },
+
+  onClickRight() {
+    // 这里可以添加右侧按钮的点击事件处理
+    wx.showToast({
+      title: '点击了右侧按钮',
+      icon: 'none'
+    });
   }
 })

@@ -1,8 +1,9 @@
 {
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index"
   },
-  "navigationBarTitleText": "我的游记",
+  "navigationStyle": "custom",
   "enablePullDownRefresh": true
 }

@@ -120,4 +120,22 @@ image {
   justify-content: center;
 }
 
+.custom-navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding-top: env(safe-area-inset-top);
+  background-color: #2b4b6b;
+}
+
+.van-nav-bar {
+  background-color: #2b4b6b !important;
+}
+
+.van-nav-bar__title, .van-nav-bar__text, .van-icon {
+  color: #fff !important;
+}
+
 
