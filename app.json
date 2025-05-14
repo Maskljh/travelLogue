@@ -29,20 +29,14 @@
       {
         "pagePath": "pages/like/like",
         "text": "喜欢",
-        "iconPath": "/images/tabs/home.png",
-        "selectedIconPath": "/images/tabs/home-active.png"
+        "iconPath": "/images/tabs/like.png",
+        "selectedIconPath": "/images/tabs/like_active.png"
       },
       {
         "pagePath": "pages/favor/favor",
         "text": "收藏",
-        "iconPath": "/images/tabs/message.png",
-        "selectedIconPath": "/images/tabs/message-active.png"
-      },
-      {
-        "pagePath": "pages/travel/travel",
-        "text": "行程",
-        "iconPath": "/images/tabs/message.png",
-        "selectedIconPath": "/images/tabs/message-active.png"
+        "iconPath": "/images/tabs/favor.png",
+        "selectedIconPath": "/images/tabs/favor_active.png"
       },
       {
         "pagePath": "pages/our/our",
