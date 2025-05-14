@@ -12,10 +12,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let likedList = wx.getStorageSync('likedList') || [];
-    let favoritedList = wx.getStorageSync('favoritedList') || [];
-    console.log(likedList)
-    console.log(favoritedList)
 
   },
 

@@ -10,7 +10,7 @@ const app = express();
 const port = 5000;
 
 // 指定上传目录
-const DESKTOP_PATH = "C:\\Users\\17870\\Desktop";
+const DESKTOP_PATH = "C:\\Users\\l\\Desktop";
 const IMAGE_DIR = path.join(DESKTOP_PATH, "image");
 const VIDEO_DIR = path.join(DESKTOP_PATH, "video");
 

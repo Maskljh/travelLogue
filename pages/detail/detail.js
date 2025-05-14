@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+const app=getApp()
 Page({
 
   /**
@@ -13,7 +14,8 @@ Page({
     isVideoPlaying: false,
     currentIndex: 0,
     isLiked: false,
-    isFavorited: false
+    isFavorited: false,
+    userInfo: null
   },
 
   fetchTraveloguesInfo(id) {
@@ -52,6 +54,14 @@ Page({
     //   });
     // }
     this.fetchTraveloguesInfo(options.id)
+    // // 获取存储的用户信息
+    // const userInfo = app.globalData.userInfo;
+    // console.log(userInfo)
+    // if (userInfo) {
+    //   this.setData({
+    //     userInfo: userInfo
+    //   });
+    // }
   },
 
   /**
@@ -65,7 +75,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    // 获取存储的用户信息
+    const userInfo = app.globalData.userInfo;
+    console.log(userInfo)
+    if (userInfo) {
+      this.setData({
+        userInfo: userInfo
+      });
+    }
   },
 
   /**
@@ -132,6 +149,18 @@ Page({
   },
 
   onLikeClick() {
+    if (!this.data.userInfo) {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      });
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        });
+      }, 1000);
+      return;
+    }
     const id = this.data.item.id;
     let likedList = wx.getStorageSync('likedList') || [];
     let isLiked = likedList.includes(id);
@@ -153,6 +182,18 @@ Page({
   },
 
   onFavoriteClick() {
+    if (!this.data.userInfo) {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      });
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        });
+      }, 1000);
+      return;
+    }
     const id = this.data.item.id;
     let favoritedList = wx.getStorageSync('favoritedList') || [];
     let isFavorited = favoritedList.includes(id);
