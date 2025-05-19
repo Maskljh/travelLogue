@@ -61,14 +61,29 @@ Page({
 
   afterRead(event) {
     const { file } = event.detail;
-    // 处理图片上传
-    const imglist = [...this.data.formData.imglist];
-    imglist.push({
-      url: file.url,
-      name: file.name
-    });
-    this.setData({
-      'formData.imglist': imglist
+    // 上传图片到服务器
+    wx.uploadFile({
+      url: 'http://localhost:5000/api/upload',
+      filePath: file.url,
+      name: 'file',
+      success: (res) => {
+        const data = JSON.parse(res.data);
+        const imglist = [...this.data.formData.imglist];
+        imglist.push({
+          url: data.url,
+          name: file.name
+        });
+        this.setData({
+          'formData.imglist': imglist
+        });
+      },
+      fail: (error) => {
+        console.error('上传失败：', error);
+        wx.showToast({
+          title: '上传失败',
+          icon: 'none'
+        });
+      }
     });
   },
 
@@ -91,10 +106,26 @@ Page({
       camera: 'back',
       success: (res) => {
         const tempFilePath = res.tempFiles[0].tempFilePath;
-        this.setData({
-          'formData.video': {
-            url: tempFilePath,
-            name: 'video'
+        // 上传视频到服务器
+        wx.uploadFile({
+          url: 'http://localhost:5000/api/upload',
+          filePath: tempFilePath,
+          name: 'file',
+          success: (uploadRes) => {
+            const data = JSON.parse(uploadRes.data);
+            this.setData({
+              'formData.video': {
+                url: data.url,
+                name: 'video'
+              }
+            });
+          },
+          fail: (error) => {
+            console.error('视频上传失败：', error);
+            wx.showToast({
+              title: '视频上传失败',
+              icon: 'none'
+            });
           }
         });
       }

@@ -97,6 +97,7 @@ Page({
       method: 'GET',
       success: (res) => {
         const favoritedTravelogues = res.data.filter(item => favoritedList.includes(item.id));
+        console.log(favoritedTravelogues)
         this.setData({
           cards: favoritedTravelogues,
           originalCards: favoritedTravelogues

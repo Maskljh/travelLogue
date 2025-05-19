@@ -84,6 +84,7 @@ Page({
 
   fetchLikedTravelogues() {
     const likedList = wx.getStorageSync('likedList') || [];
+    console.log(likedList)
     if (likedList.length === 0) {
       this.setData({
         cards: [],
@@ -97,6 +98,8 @@ Page({
       method: 'GET',
       success: (res) => {
         const likedTravelogues = res.data.filter(item => likedList.includes(item.id));
+        console.log(likedTravelogues)
+        console.log(this.data.userInfo)
         this.setData({
           cards: likedTravelogues,
           originalCards: likedTravelogues
