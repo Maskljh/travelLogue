@@ -15,7 +15,8 @@ Page({
     currentIndex: 0,
     isLiked: false,
     isFavorited: false,
-    userInfo: null
+    userInfo: null,
+    currentID: 0
   },
 
   fetchTraveloguesInfo(id) {
@@ -25,13 +26,17 @@ Page({
       success: (res) => {
         console.log(res)
         const item = res.data;
-        const likedList = wx.getStorageSync('likedList') || [];
-        const favoritedList = wx.getStorageSync('favoritedList') || [];
-        this.setData({
-          item,
-          isLiked: likedList.includes(item.id),
-          isFavorited: favoritedList.includes(item.id)
-        });
+        const userInfo = app.globalData.userInfo;
+        let data = { item };
+        
+        if (userInfo) {
+          const likedList = wx.getStorageSync('likedList') || [];
+          const favoritedList = wx.getStorageSync('favoritedList') || [];
+          data.isLiked = likedList.includes(item.id);
+          data.isFavorited = favoritedList.includes(item.id);
+        }
+        
+        this.setData(data);
       },
       fail: (error) => {
         console.error('获取数据失败：', error);
@@ -48,6 +53,9 @@ Page({
    */
   onLoad(options) {
     console.log(options.id)
+    this.setData({
+      currentID: options.id
+    })
     // if (options.item) {
     //   this.setData({
     //     item: JSON.parse(decodeURIComponent(options.item))
@@ -83,6 +91,7 @@ Page({
         userInfo: userInfo
       });
     }
+    this.fetchTraveloguesInfo(this.data.currentID)
   },
 
   /**
