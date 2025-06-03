@@ -1,0 +1,43 @@
+0 verbose cli C:\Users\17870\nodejs\node.exe C:\Users\17870\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v22.14.0
+3 silly config load:file:C:\Users\17870\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\17870\Desktop\travelLogue\.npmrc
+5 silly config load:file:C:\Users\17870\.npmrc
+6 silly config load:file:C:\Users\17870\Desktop\travelLogue\node_global\etc\npmrc
+7 verbose title npm init
+8 verbose argv "init" "--yes"
+9 verbose logfile logs-max:10 dir:C:\Users\17870\Desktop\travelLogue\node_cache\_logs\2025-06-03T03_25_14_617Z-
+10 verbose logfile C:\Users\17870\Desktop\travelLogue\node_cache\_logs\2025-06-03T03_25_14_617Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly package data {
+12 silly package data   dependencies: {
+12 silly package data     '@vant/weapp': '^1.11.7',
+12 silly package data     'cookie-parser': '^1.4.7',
+12 silly package data     jsonwebtoken: '^9.0.2',
+12 silly package data     'me-waterfall': '^1.1.2'
+12 silly package data   },
+12 silly package data   name: 'travellogue',
+12 silly package data   version: '1.0.0',
+12 silly package data   description: 'TravelLogue 是一个基于微信小程序平台开发的旅行游记分享应用，让用户可以记录和分享他们的旅行经历。',
+12 silly package data   main: 'app.js',
+12 silly package data   devDependencies: {},
+12 silly package data   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+12 silly package data   repository: {
+12 silly package data     type: 'git',
+12 silly package data     url: 'git+https://github.com/Maskljh/travelLogue.git'
+12 silly package data   },
+12 silly package data   keywords: [],
+12 silly package data   author: '',
+12 silly package data   license: 'ISC',
+12 silly package data   bugs: { url: 'https://github.com/Maskljh/travelLogue/issues' },
+12 silly package data   homepage: 'https://github.com/Maskljh/travelLogue#readme',
+12 silly package data   [Symbol(newline)]: '\r\n',
+12 silly package data   [Symbol(indent)]: '  '
+12 silly package data }
+13 verbose cwd C:\Users\17870\Desktop\travelLogue
+14 verbose os Windows_NT 10.0.26100
+15 verbose node v22.14.0
+16 verbose npm  v10.9.2
+17 verbose exit 0
+18 info ok

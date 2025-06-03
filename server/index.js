@@ -60,7 +60,7 @@ const upload = multer({
 // app.use(cors());
 app.use(
   cors({
-    origin: "http://localhost:5173", // 前端应用地址
+    origin: "http://localhost:3000", // 前端应用地址
     credentials: true, // 允许携带凭证
   })
 );
@@ -206,7 +206,7 @@ const travelogues = [
     // 看的数量
     views: 0,
     // 0:待审核、1:已通过、2:未通过
-    status: 0,
+    status: 1,
     // 未通过原因
     reason: "",
     // 是否删除
@@ -227,7 +227,7 @@ const travelogues = [
     desc: "西湖美景让人流连忘返",
     author: "旅行达人",
     views: 0,
-    status: 0,
+    status: 1,
     reason: "",
     isdeleted: false,
     time: "2025-05-01 19:02:09",
@@ -246,7 +246,7 @@ const travelogues = [
     desc: "魔都夜景太美了",
     author: "城市探索者",
     views: 0,
-    status: 0,
+    status: 1,
     reason: "",
     isdeleted: false,
     time: "2025-05-01 19:02:10",
@@ -265,7 +265,7 @@ const travelogues = [
     desc: "感受历史的厚重",
     author: "文化探索者",
     views: 0,
-    status: 0,
+    status: 1,
     reason: "",
     isdeleted: false,
     time: "2025-05-01 19:02:11",
@@ -284,7 +284,7 @@ const travelogues = [
     desc: "舌尖上的广州",
     author: "美食家",
     views: 0,
-    status: 0,
+    status: 1,
     reason: "",
     isdeleted: false,
     time: "2025-05-01 19:02:12",
@@ -303,7 +303,7 @@ const travelogues = [
     desc: "现代都市中的自然风光",
     author: "城市漫步者",
     views: 0,
-    status: 0,
+    status: 1,
     reason: "",
     isdeleted: false,
     time: "2025-05-01 19:02:13",
@@ -322,7 +322,7 @@ const travelogues = [
     desc: "感受老成都的悠闲生活",
     author: "慢生活家",
     views: 0,
-    status: 0,
+    status: 1,
     reason: "",
     isdeleted: false,
     time: "2025-05-01 19:02:14",
@@ -356,17 +356,17 @@ const admins = [
 
 // 获取所有游记
 app.get("/api/travelogues", (req, res) => {
-  const { page } = req.query;
+  const { page, pageSize } = req.query;
   // 过滤掉已删除的游记
   const activeTravelogues = travelogues.filter((t) => !t.isdeleted);
+  // 按时间逆序排序
+  activeTravelogues.sort((a, b) => {
+    return new Date(b.time) - new Date(a.time);
+  });
 
   // 如果传入了 page 参数，则进行分页
   if (page) {
-    // 按时间逆序排序
-    activeTravelogues.sort((a, b) => {
-      return new Date(b.time) - new Date(a.time);
-    });
-    const pageSize = 10; // 每页显示10条数据
+    // const pageSize = 10; // 每页显示10条数据
     const startIndex = (page - 1) * pageSize; // 前面的不显示
     const endIndex = startIndex + pageSize; // 后面的不显示
     const currentPageTravelogues = activeTravelogues.slice(
@@ -730,6 +730,6 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   });
 });
 
-app.listen(port, "localhost", () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`服务器运行在 http://localhost:${port}`);
 });

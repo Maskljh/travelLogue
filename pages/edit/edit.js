@@ -1,4 +1,6 @@
 // pages/edit/edit.js
+const config = require('../../config.js')
+
 Page({
   data: {
     id: null,
@@ -19,7 +21,7 @@ Page({
 
   fetchTravelogueDetail(id) {
     wx.request({
-      url: `http://localhost:5000/api/travelogues/${id}`,
+      url: `${config.baseUrl}/api/travelogues/${id}`,
       method: 'GET',
       success: (res) => {
         const data = res.data;
@@ -63,7 +65,7 @@ Page({
     const { file } = event.detail;
     // 上传图片到服务器
     wx.uploadFile({
-      url: 'http://localhost:5000/api/upload',
+      url: config.baseUrl + '/api/upload',
       filePath: file.url,
       name: 'file',
       success: (res) => {
@@ -108,7 +110,7 @@ Page({
         const tempFilePath = res.tempFiles[0].tempFilePath;
         // 上传视频到服务器
         wx.uploadFile({
-          url: 'http://localhost:5000/api/upload',
+          url: config.baseUrl + '/api/upload',
           filePath: tempFilePath,
           name: 'file',
           success: (uploadRes) => {
@@ -175,7 +177,7 @@ Page({
     };
 
     wx.request({
-      url: `http://localhost:5000/api/travelogues/${this.data.id}`,
+      url: `${config.baseUrl}/api/travelogues/${this.data.id}`,
       method: 'PUT',
       data: submitData,
       success: (res) => {

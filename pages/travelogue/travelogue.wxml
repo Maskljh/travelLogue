@@ -31,4 +31,5 @@
   </view>
   <!-- <view class="backtop" bindtap="backtop"> ↑ </view> -->
   <van-icon name="back-top" class="backtop" bindtap="backtop"/>
+  <van-toast id="van-toast" />
 </view>

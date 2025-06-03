@@ -1,5 +1,6 @@
 // pages/detail/detail.js
 const app=getApp()
+const config = require('../../config.js')
 Page({
 
   /**
@@ -21,7 +22,7 @@ Page({
 
   fetchTraveloguesInfo(id) {
     wx.request({
-      url: 'http://localhost:5000/api/travelogues/'+id,
+      url: config.baseUrl + '/api/travelogues/'+id,
       method: 'GET',
       success: (res) => {
         console.log(res)

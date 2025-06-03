@@ -1,5 +1,6 @@
 // pages/like/like.js
 const app=getApp()
+const config = require('../../config.js')
 Page({
 
   /**
@@ -94,7 +95,7 @@ Page({
     }
 
     wx.request({
-      url: 'http://localhost:5000/api/travelogues',
+      url: config.baseUrl + '/api/travelogues',
       method: 'GET',
       success: (res) => {
         const likedTravelogues = res.data.filter(item => likedList.includes(item.id));

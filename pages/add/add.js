@@ -1,5 +1,6 @@
 // pages/add/add.js
 const app=getApp()
+const config = require('../../config.js')
 Page({
   data: {
     id: null,
@@ -37,7 +38,7 @@ Page({
     const { file } = event.detail;
     // 上传图片到服务器
     wx.uploadFile({
-      url: 'http://localhost:5000/api/upload',
+      url: config.baseUrl + '/api/upload',
       filePath: file.url,
       name: 'file',
       success: (res) => {
@@ -82,7 +83,7 @@ Page({
         const tempFilePath = res.tempFiles[0].tempFilePath;
         // 上传视频到服务器
         wx.uploadFile({
-          url: 'http://localhost:5000/api/upload',
+          url: config.baseUrl + '/api/upload',
           filePath: tempFilePath,
           name: 'file',
           success: (uploadRes) => {
@@ -156,7 +157,7 @@ Page({
 
 
     wx.request({
-      url: `http://localhost:5000/api/travelogues`,
+      url: `${config.baseUrl}/api/travelogues`,
       method: 'POST',
       data: submitData,
       success: (res) => {

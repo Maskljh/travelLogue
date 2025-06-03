@@ -1,4 +1,7 @@
 // pages/travelogue/travelogue.js
+const config = require('../../config.js')
+import Toast from '@vant/weapp/toast/toast';
+
 Page({
 
   /**
@@ -6,34 +9,62 @@ Page({
    */
   data: {
     cards: [],
+    page:1,
+    pageSize:10,
+    hasMore: true, // 是否还有更多数据
     searchValue: '',
-    originalCards: [] // 存储原始数据
+    originalCards: [], // 存储原始数据
+    isLoading: false // 添加加载状态控制
   },
 
 
   fetchTravelogues() {
+    if (!this.data.hasMore || this.data.isLoading) return;
+    
+    this.setData({ isLoading: true });
+
+    // 自定义加载图标
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+      loadingType: 'spinner',
+      duration: 3000,
+    });
+    
     wx.request({
-      url: 'http://localhost:5000/api/travelogues',
+      url: config.baseUrl + '/api/travelogues',
       method: 'GET',
+      data:{
+        page:this.data.page,
+        pageSize:this.data.pageSize
+      },
       success: (res) => {
         console.log(res)
+        if (!res.data || !res.data.data) {
+          Toast.fail('数据格式错误');
+          return;
+        }
+
+        if( res.data.data.length < this.data.pageSize){
+          this.setData({
+            hasMore:false
+          })
+        }
+        const totalData=[...this.data.cards,...res.data.data]
+        console.log(totalData)
         this.setData({
-          cards: res.data,
-          originalCards: res.data // 保存原始数据
-        }, () => {
-          // 在数据更新完成后调用reflow
-          const waterfallInstance = this.selectComponent("#waterfall");
-          if (waterfallInstance) {
-            waterfallInstance.reflow();
-          }
+          cards: totalData,
+          originalCards: totalData, // 保存原始数据
+          isLoading: false
         });
+
+        // 关闭加载提示
+        Toast.clear();
       },
       fail: (error) => {
         console.error('获取数据失败：', error);
-        wx.showToast({
-          title: '获取数据失败',
-          icon: 'none'
-        });
+        Toast.fail('获取数据失败');
+        this.setData({ isLoading: false });
       }
     });
   },
@@ -90,27 +121,21 @@ Page({
    */
   onLoad(options) {
     this.fetchTravelogues();
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    // 在页面渲染完成后重新布局瀑布流
-    setTimeout(() => {
-      const waterfallInstance = this.selectComponent("#waterfall");
-      if (waterfallInstance) {
-        waterfallInstance.reflow();
-      }
-    }, 200);
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // 每次页面显示时重新获取数据
-    this.fetchTravelogues();
+
   },
 
   /**
@@ -124,21 +149,38 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    this.setData({
+      page: 1,
+      hasMore: true,
+      cards: [],
+      originalCards: []
+    }, () => {
+      this.fetchTravelogues();
+      const waterfallInstance = this.selectComponent("#waterfall");
+      if (waterfallInstance) {
+        waterfallInstance.reflow();
+      }
+      wx.stopPullDownRefresh();
+    });
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    if (this.data.hasMore && !this.data.isLoading) {
+      this.setData({
+        page: this.data.page + 1
+      })
+    }
+    this.fetchTravelogues()
   },
 
   /**

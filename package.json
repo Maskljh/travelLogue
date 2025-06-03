@@ -4,5 +4,24 @@
     "cookie-parser": "^1.4.7",
     "jsonwebtoken": "^9.0.2",
     "me-waterfall": "^1.1.2"
-  }
+  },
+  "name": "travellogue",
+  "version": "1.0.0",
+  "description": "TravelLogue 是一个基于微信小程序平台开发的旅行游记分享应用，让用户可以记录和分享他们的旅行经历。",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maskljh/travelLogue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maskljh/travelLogue/issues"
+  },
+  "homepage": "https://github.com/Maskljh/travelLogue#readme"
 }

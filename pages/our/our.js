@@ -1,4 +1,5 @@
 // pages/our/our.js
+const config = require('../../config.js')
 var app = getApp();
 
 Page({
@@ -74,7 +75,7 @@ Page({
   confirmDelete(e) {
     const id = this.data.currentId;
     wx.request({
-      url: `http://localhost:5000/api/travelogues/${id}`,
+      url: `${config.baseUrl}/api/travelogues/${id}`,
       method: 'DELETE',
       success: (res) => {
         wx.showToast({
@@ -129,7 +130,7 @@ Page({
     }
 
     wx.request({
-      url: 'http://localhost:5000/api/travelogues/user/'+openid,
+      url: config.baseUrl + '/api/travelogues/user/'+openid,
       method: 'GET',
       success: (res) => {
         this.setData({
