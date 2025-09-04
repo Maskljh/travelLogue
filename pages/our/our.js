@@ -74,7 +74,7 @@ Page({
   confirmDelete(e) {
     const id = this.data.currentId;
     wx.request({
-      url: `http://localhost:5000/api/travelogues/${id}`,
+      url: `http://localhost:5000/api/travelogues/${id}/delete`,
       method: 'DELETE',
       success: (res) => {
         wx.showToast({
@@ -132,9 +132,17 @@ Page({
       url: 'http://localhost:5000/api/travelogues/user/'+openid,
       method: 'GET',
       success: (res) => {
+        console.log(res)
+        // 修正 imglist 字段
+        const fixedData = res.data.map(card => ({
+          ...card,
+          isdeleted: card.isdeleted === 0? false : true,
+          imglist: typeof card.imglist === 'string' ? JSON.parse(card.imglist) : card.imglist
+        }));
+        console.log(fixedData)
         this.setData({
-          cards: res.data,
-          originalCards: res.data
+          cards: fixedData,
+          originalCards: fixedData
         });
       },
       fail: (error) => {

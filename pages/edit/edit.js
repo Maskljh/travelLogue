@@ -23,6 +23,15 @@ Page({
       method: 'GET',
       success: (res) => {
         const data = res.data;
+        console.log(data)
+        if (typeof data.imglist === 'string') {
+          try {
+            data.imglist = JSON.parse(data.imglist);
+          } catch (e) {
+            console.error('imglist JSON解析失败', e);
+            data.imglist = []; // 或者保留原样
+          }
+        }
         this.setData({
           formData: {
             title: data.title,

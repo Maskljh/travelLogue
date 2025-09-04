@@ -96,7 +96,13 @@ Page({
       url: 'http://localhost:5000/api/travelogues',
       method: 'GET',
       success: (res) => {
-        const favoritedTravelogues = res.data.filter(item => favoritedList.includes(item.id));
+        // 修正 imglist 字段
+        const fixedData = res.data.data.map(card => ({
+          ...card,
+          isdeleted: card.isdeleted === 0? false : true,
+          imglist: typeof card.imglist === 'string' ? JSON.parse(card.imglist) : card.imglist
+        }));
+        const favoritedTravelogues = fixedData.filter(item => favoritedList.includes(item.id));
         console.log(favoritedTravelogues)
         this.setData({
           cards: favoritedTravelogues,

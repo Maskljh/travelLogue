@@ -24,8 +24,16 @@ Page({
       url: 'http://localhost:5000/api/travelogues/'+id,
       method: 'GET',
       success: (res) => {
-        console.log(res)
+        console.log(res.data)
         const item = res.data;
+        if (typeof item.imglist === 'string') {
+          try {
+            item.imglist = JSON.parse(item.imglist);
+          } catch (e) {
+            console.error('imglist JSON解析失败', e);
+            item.imglist = []; // 或者保留原样
+          }
+        }
         const userInfo = app.globalData.userInfo;
         let data = { item };
         

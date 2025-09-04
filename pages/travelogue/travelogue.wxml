@@ -1,13 +1,6 @@
 <view class="container">
   <view class="search-container">
-    <van-search
-      value="{{ searchValue }}"
-      placeholder="搜索游记标题或作者"
-      bind:change="onSearchChange"
-      bind:search="onSearch"
-      shape="round"
-      background="#ffffff"
-    />
+    <van-search value="{{ searchValue }}" placeholder="搜索游记标题或作者" bind:change="onSearchChange" bind:search="onSearch" shape="round" background="#ffffff" />
   </view>
   <view class="card-list">
     <me-waterfall id="waterfall">
@@ -28,7 +21,19 @@
         </view>
       </me-waterfall-item>
     </me-waterfall>
+    
+    <!-- 加载状态和加载更多提示 -->
+    <view class="loading-container" wx:if="{{cards.length > 0}}">
+      <view wx:if="{{loading}}" class="loading-text">
+        <van-loading size="20px" color="#1989fa">加载中...</van-loading>
+      </view>
+      <view wx:elif="{{!hasMore}}" class="no-more-text">
+        没有更多数据了
+      </view>
+      <view wx:elif="{{hasMore}}" class="load-more-text">
+        上拉加载更多
+      </view>
+    </view>
   </view>
-  <!-- <view class="backtop" bindtap="backtop"> ↑ </view> -->
-  <van-icon name="back-top" class="backtop" bindtap="backtop"/>
+  <van-icon name="back-top" class="backtop" bindtap="backtop" />
 </view>

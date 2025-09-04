@@ -3,6 +3,8 @@
     "@vant/weapp": "^1.11.7",
     "cookie-parser": "^1.4.7",
     "jsonwebtoken": "^9.0.2",
-    "me-waterfall": "^1.1.2"
+    "me-waterfall": "^1.1.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.14.2"
   }
 }
